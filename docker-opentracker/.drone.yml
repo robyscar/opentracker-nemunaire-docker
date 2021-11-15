@@ -1,0 +1,99 @@
+---
+kind: pipeline
+type: docker
+name: build-amd64
+
+platform:
+  os: linux
+  arch: amd64
+
+steps:
+  - name: docker build and publish
+    image: plugins/docker
+    settings:
+      username:
+        from_secret: docker_username
+      password:
+        from_secret: docker_password
+      repo: nemunaire/opentracker
+      auto_tag: true
+      auto_tag_suffix: ${DRONE_STAGE_OS}-${DRONE_STAGE_ARCH}
+      dockerfile: Dockerfile
+    when:
+      branch:
+        - master
+
+---
+kind: pipeline
+type: docker
+name: build-arm64
+
+platform:
+  os: linux
+  arch: arm64
+
+steps:
+  - name: docker build and publish
+    image: plugins/docker
+    settings:
+      username:
+        from_secret: docker_username
+      password:
+        from_secret: docker_password
+      repo: nemunaire/opentracker
+      auto_tag: true
+      auto_tag_suffix: ${DRONE_STAGE_OS}-${DRONE_STAGE_ARCH}
+      dockerfile: Dockerfile
+    when:
+      branch:
+        - master
+
+---
+kind: pipeline
+type: docker
+name: build-arm
+
+platform:
+  os: linux
+  arch: arm
+
+steps:
+  - name: docker build and publish
+    image: plugins/docker
+    settings:
+      username:
+        from_secret: docker_username
+      password:
+        from_secret: docker_password
+      repo: nemunaire/opentracker
+      auto_tag: true
+      auto_tag_suffix: ${DRONE_STAGE_OS}-${DRONE_STAGE_ARCH}
+      dockerfile: Dockerfile
+    when:
+      branch:
+        - master
+
+---
+kind: pipeline
+name: docker-manifest
+steps:
+  - name: publish manifest
+    image: plugins/manifest
+    settings:
+      auto_tag: true
+      ignore_missing: true
+      spec: .drone-manifest.yml
+      username:
+        from_secret: docker_username
+      password:
+        from_secret: docker_password
+
+trigger:
+  event:
+  - push
+  - tag
+
+depends_on:
+- build-amd64
+- build-arm64
+- build-arm
