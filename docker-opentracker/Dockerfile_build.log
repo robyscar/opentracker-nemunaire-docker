@@ -1,0 +1,3079 @@
+Step 1/19 : FROM alpine as build
+
+
+
+ ---> 30a002f9ce29
+
+Step 2/19 : RUN apk update --no-cache
+
+
+
+ ---> Running in 63800e5f0d2f
+
+fetch https://dl-cdn.alpinelinux.org/alpine/v3.14/main/armv7/APKINDEX.tar.gz
+
+fetch https://dl-cdn.alpinelinux.org/alpine/v3.14/community/armv7/APKINDEX.tar.gz
+
+v3.14.3-8-gdab723ccf8 [https://dl-cdn.alpinelinux.org/alpine/v3.14/main]
+v3.14.3-9-gd0d54b3772 [https://dl-cdn.alpinelinux.org/alpine/v3.14/community]
+OK: 14537 distinct packages available
+
+Removing intermediate container 63800e5f0d2f
+
+ ---> f8fbc84ecd6f
+
+Step 3/19 : RUN apk upgrade --no-cache
+
+
+
+ ---> Running in 4c120a0e281c
+
+fetch https://dl-cdn.alpinelinux.org/alpine/v3.14/main/armv7/APKINDEX.tar.gz
+
+fetch https://dl-cdn.alpinelinux.org/alpine/v3.14/community/armv7/APKINDEX.tar.gz
+
+OK: 4 MiB in 14 packages
+
+Removing intermediate container 4c120a0e281c
+
+ ---> 1045ed9858bd
+
+Step 4/19 : RUN apk add --no-cache gcc g++ make git cvs zlib-dev wget tar gzip xz
+
+
+
+ ---> Running in 21740fccbadc
+
+fetch https://dl-cdn.alpinelinux.org/alpine/v3.14/main/armv7/APKINDEX.tar.gz
+
+fetch https://dl-cdn.alpinelinux.org/alpine/v3.14/community/armv7/APKINDEX.tar.gz
+
+(1/36) Installing cvs (1.12.13-r0)
+
+(2/36) Installing libgcc (10.3.1_git20210424-r2)
+
+(3/36) Installing libstdc++ (10.3.1_git20210424-r2)
+
+(4/36) Installing binutils (2.35.2-r2)
+
+(5/36) Installing libgomp (10.3.1_git20210424-r2)
+
+(6/36) Installing libatomic (10.3.1_git20210424-r2)
+
+(7/36) Installing libgphobos (10.3.1_git20210424-r2)
+
+(8/36) Installing gmp (6.2.1-r0)
+
+(9/36) Installing isl22 (0.22-r0)
+
+(10/36) Installing mpfr4 (4.1.0-r0)
+
+(11/36) Installing mpc1 (1.2.1-r0)
+
+(12/36) Installing gcc (10.3.1_git20210424-r2)
+
+(13/36) Installing musl-dev (1.2.2-r3)
+
+(14/36) Installing libc-dev (0.7.2-r3)
+
+(15/36) Installing g++ (10.3.1_git20210424-r2)
+
+(16/36) Installing ca-certificates (20191127-r5)
+
+(17/36) Installing brotli-libs (1.0.9-r5)
+
+(18/36) Installing nghttp2-libs (1.43.0-r0)
+
+(19/36) Installing libcurl (7.79.1-r0)
+
+(20/36) Installing expat (2.4.1-r0)
+
+(21/36) Installing pcre2 (10.36-r0)
+
+(22/36) Installing git (2.32.0-r0)
+
+(23/36) Installing ncurses-terminfo-base (6.2_p20210612-r0)
+
+(24/36) Installing ncurses-libs (6.2_p20210612-r0)
+
+(25/36) Installing less (581-r1)
+
+(26/36) Installing gzip (1.10-r1)
+
+(27/36) Installing make (4.3-r0)
+
+(28/36) Installing libacl (2.2.53-r0)
+
+(29/36) Installing tar (1.34-r0)
+
+(30/36) Installing libunistring (0.9.10-r1)
+
+(31/36) Installing libidn2 (2.3.1-r0)
+
+(32/36) Installing wget (1.21.1-r1)
+
+(33/36) Installing xz-libs (5.2.5-r0)
+
+(34/36) Installing xz (5.2.5-r0)
+
+(35/36) Installing pkgconf (1.7.4-r0)
+
+(36/36) Installing zlib-dev (1.2.11-r3)
+
+Executing busybox-1.33.1-r6.trigger
+
+Executing ca-certificates-20191127-r5.trigger
+
+OK: 143 MiB in 50 packages
+
+Removing intermediate container 21740fccbadc
+
+ ---> 599926b60b8b
+
+Step 5/19 : RUN apk update --no-cache
+
+
+
+ ---> Running in 101a4b73eba3
+
+fetch https://dl-cdn.alpinelinux.org/alpine/v3.14/main/armv7/APKINDEX.tar.gz
+
+fetch https://dl-cdn.alpinelinux.org/alpine/v3.14/community/armv7/APKINDEX.tar.gz
+
+v3.14.3-8-gdab723ccf8 [https://dl-cdn.alpinelinux.org/alpine/v3.14/main]
+v3.14.3-9-gd0d54b3772 [https://dl-cdn.alpinelinux.org/alpine/v3.14/community]
+OK: 14537 distinct packages available
+
+Removing intermediate container 101a4b73eba3
+
+ ---> 002153876f74
+
+Step 6/19 : RUN apk add --no-cache nano openrc
+
+
+
+ ---> Running in 5b3af7ec201c
+
+fetch https://dl-cdn.alpinelinux.org/alpine/v3.14/main/armv7/APKINDEX.tar.gz
+
+fetch https://dl-cdn.alpinelinux.org/alpine/v3.14/community/armv7/APKINDEX.tar.gz
+
+(1/4) Installing libmagic (5.40-r1)
+
+(2/4) Installing nano (5.7-r2)
+
+(3/4) Installing ifupdown-ng (0.11.3-r0)
+
+(4/4) Installing openrc (0.43.3-r2)
+
+Executing openrc-0.43.3-r2.post-install
+
+Executing busybox-1.33.1-r6.trigger
+
+OK: 152 MiB in 54 packages
+
+Removing intermediate container 5b3af7ec201c
+
+ ---> ae918ca4db59
+
+Step 7/19 : RUN apk update --no-cache
+
+
+
+ ---> Running in a82c1c783813
+
+fetch https://dl-cdn.alpinelinux.org/alpine/v3.14/main/armv7/APKINDEX.tar.gz
+
+fetch https://dl-cdn.alpinelinux.org/alpine/v3.14/community/armv7/APKINDEX.tar.gz
+
+v3.14.3-8-gdab723ccf8 [https://dl-cdn.alpinelinux.org/alpine/v3.14/main]
+v3.14.3-9-gd0d54b3772 [https://dl-cdn.alpinelinux.org/alpine/v3.14/community]
+OK: 14537 distinct packages available
+
+Removing intermediate container a82c1c783813
+
+ ---> e2ddf3cac29b
+
+Step 8/19 : RUN apk add --no-cache glib musl-dev libc-dev zlib-dev
+
+
+
+ ---> Running in 6bd64c1c3438
+
+fetch https://dl-cdn.alpinelinux.org/alpine/v3.14/main/armv7/APKINDEX.tar.gz
+
+fetch https://dl-cdn.alpinelinux.org/alpine/v3.14/community/armv7/APKINDEX.tar.gz
+
+(1/6) Installing libffi (3.3-r2)
+
+(2/6) Installing libintl (0.21-r0)
+
+(3/6) Installing libblkid (2.37.2-r0)
+
+(4/6) Installing libmount (2.37.2-r0)
+
+(5/6) Installing pcre (8.44-r0)
+
+(6/6) Installing glib (2.68.3-r0)
+
+Executing busybox-1.33.1-r6.trigger
+
+OK: 155 MiB in 60 packages
+
+Removing intermediate container 6bd64c1c3438
+
+ ---> e5d57d6fe3ff
+
+Step 9/19 : RUN apk update --no-cache
+
+
+
+ ---> Running in 0f343500b207
+
+fetch https://dl-cdn.alpinelinux.org/alpine/v3.14/main/armv7/APKINDEX.tar.gz
+
+fetch https://dl-cdn.alpinelinux.org/alpine/v3.14/community/armv7/APKINDEX.tar.gz
+
+v3.14.3-8-gdab723ccf8 [https://dl-cdn.alpinelinux.org/alpine/v3.14/main]
+v3.14.3-9-gd0d54b3772 [https://dl-cdn.alpinelinux.org/alpine/v3.14/community]
+OK: 14537 distinct packages available
+
+Removing intermediate container 0f343500b207
+
+ ---> f50a9ec1e343
+
+Step 10/19 : RUN apk add --no-cache libowfat-dev libowfat
+
+
+
+ ---> Running in c4e98084730b
+
+fetch https://dl-cdn.alpinelinux.org/alpine/v3.14/main/armv7/APKINDEX.tar.gz
+
+fetch https://dl-cdn.alpinelinux.org/alpine/v3.14/community/armv7/APKINDEX.tar.gz
+
+(1/2) Installing libowfat (0.32-r1)
+
+(2/2) Installing libowfat-dev (0.32-r1)
+
+OK: 156 MiB in 62 packages
+
+Removing intermediate container c4e98084730b
+
+ ---> 1f2a865a4f75
+
+Step 11/19 : RUN apk add --no-cache opentracker
+
+
+
+ ---> Running in 19458ce568e2
+
+fetch https://dl-cdn.alpinelinux.org/alpine/v3.14/main/armv7/APKINDEX.tar.gz
+
+fetch https://dl-cdn.alpinelinux.org/alpine/v3.14/community/armv7/APKINDEX.tar.gz
+
+(1/2) Installing opentracker (0_git20180526-r1)
+
+Executing opentracker-0_git20180526-r1.pre-install
+
+(2/2) Installing opentracker-openrc (0_git20180526-r1)
+
+Executing busybox-1.33.1-r6.trigger
+
+OK: 156 MiB in 64 packages
+
+Removing intermediate container 19458ce568e2
+
+ ---> 0c123335305f
+
+Step 12/19 : RUN apk update --no-cache
+
+
+
+ ---> Running in 2fb9043a55b6
+
+fetch https://dl-cdn.alpinelinux.org/alpine/v3.14/main/armv7/APKINDEX.tar.gz
+
+fetch https://dl-cdn.alpinelinux.org/alpine/v3.14/community/armv7/APKINDEX.tar.gz
+
+v3.14.3-8-gdab723ccf8 [https://dl-cdn.alpinelinux.org/alpine/v3.14/main]
+v3.14.3-9-gd0d54b3772 [https://dl-cdn.alpinelinux.org/alpine/v3.14/community]
+OK: 14537 distinct packages available
+
+Removing intermediate container 2fb9043a55b6
+
+ ---> 1c3c267a1794
+
+Step 13/19 : RUN cvs -d :pserver:cvs@cvs.fefe.de:/cvs -z9 co libowfat 	&& cd libowfat 	&& make
+
+
+
+ ---> Running in b99a9bcd9670
+
+cvs checkout: warning: failed to open /root/.cvspass for reading: No such file or directory
+
+/cvs-bin checkout: Updating libowfat
+
+U libowfat/.cvsignore
+
+U libowfat/CAS.h
+U libowfat/CHANGES
+U libowfat/COPYING
+U libowfat/GNUmakefile
+U libowfat/Makefile
+U libowfat/README
+U libowfat/TODO
+U libowfat/array.h
+U libowfat/buffer.h
+U libowfat/byte.h
+U libowfat/case.h
+U libowfat/cdb.h
+U libowfat/cdb_make.h
+U libowfat/compiler.h
+U libowfat/compiletimeassert.h
+U libowfat/critbit.h
+U libowfat/dns.h
+U libowfat/ent.c
+U libowfat/entities.json
+U libowfat/errmsg.h
+U libowfat/errmsg_int.h
+U libowfat/fmt.h
+U libowfat/iarray.h
+U libowfat/io.h
+U libowfat/io_internal.h
+U libowfat/iob.h
+U libowfat/iob_internal.h
+U libowfat/iopause.h1
+U libowfat/iopause.h2
+U libowfat/ip4.h
+U libowfat/ip6.h
+U libowfat/isset.h
+U libowfat/likely.h
+U libowfat/mmap.h
+U libowfat/ndelay.h
+U libowfat/open.h
+U libowfat/openreadclose.h
+U libowfat/parse.h
+U libowfat/rangecheck.h
+U libowfat/readclose.h
+U libowfat/safemult.h
+U libowfat/scan.h
+U libowfat/select.h1
+U libowfat/select.h2
+U libowfat/socket.h
+U libowfat/str.h
+U libowfat/stralloc.h
+U libowfat/t.c
+U libowfat/tai.h
+U libowfat/taia.h
+U libowfat/textcode.h
+U 
+
+/cvs-bin checkout: Updating libowfat/array
+
+libowfat/tryaccept4.c
+U libowfat/tryalloca.c
+U libowfat/trybsdsf.c
+U libowfat/trydevpoll.c
+U libowfat/tryepoll.c
+U libowfat/tryinline.c
+U libowfat/tryip6.c
+U libowfat/trykqueue.c
+U libowfat/tryn2i.c
+U libowfat/trypoll.c
+U libowfat/trypread.c
+U libowfat/tryscope.c
+U libowfat/trysendfile.c
+U libowfat/trysigio.c
+U libowfat/trysl.c
+U libowfat/trysocket.c
+U libowfat/trysysel.c
+U libowfat/tryuint128.c
+U libowfat/uint16.h
+U libowfat/uint32.h
+U libowfat/uint64.h
+U libowfat/va_narg.h
+U libowfat/windoze.h
+
+U libowfat/array/array.3
+U libowfat/array/array_allocate.3
+U libowfat/array/array_allocate.c
+U libowfat/array/array_bytes.3
+U libowfat/array/array_bytes.c
+U libowfat/array/array_cat.3
+U libowfat/array/array_cat.c
+U libowfat/array/array_cat0.3
+U libowfat/array/array_cat0.c
+U libowfat/array/array_catb.3
+U libowfat/array/array_catb.c
+U libowfat/array/array_cate.3
+U libowfat/array/array_cate.c
+U libowfat/array/array_cats.3
+U libowfat/array/array_cats.c
+U libowfat/array/array_cats0.3
+U libowfat/array/array_cats0.c
+U libowfat/array/array_equal.3
+U libowfat/array/array_equal.c
+U libowfat/array/array_fail.3
+U libowfat/array/array_fail.c
+U libowfat/array/array_get.3
+U libowfat/array/array_get.c
+U libowfat/array/array_length.3
+U libowfat/array/array_length.c
+U libowfat/array/array_reset.3
+U libowfat/array/array_reset.c
+U libowfat/array/array_start.3
+U libowfat/array/array_start.c
+U libowfat/array/array_trunc.3
+U libowfat/array/array_trunc.c
+U libowfat/array/array_truncate.3
+U libowfat/array/array_truncate.c
+U libowfat/array/iarray_allocate.3
+
+
+U libowfat/array/iarray_allocate.c
+U libowfat/array/iarray_free.3
+U libowfat/array/iarray_free.c
+U libowfat/array/iarray_get.3
+U libowfat/array/iarray_get.c
+U libowfat/array/iarray_init.3
+U libowfat/array/iarray_init.c
+U libowfat/array/iarray_length.c
+
+/cvs-bin checkout: Updating libowfat/buffer
+
+U libowfat/buffer/bs_capacityassert.c
+U libowfat/buffer/bs_capacitycheck.c
+U libowfat/buffer/bs_capacityleft.c
+U libowfat/buffer/bs_consumeleftovers.c
+U libowfat/buffer/bs_err.c
+U libowfat/buffer/bs_get.c
+U libowfat/buffer/bs_init_bstream_size.c
+U libowfat/buffer/bs_init_iobuf.c
+U libowfat/buffer/bs_init_iobuf_size.c
+U libowfat/buffer/bs_init_membuf.c
+U libowfat/buffer/bs_nomoredataassert.c
+U libowfat/buffer/bs_peek.c
+U libowfat/buffer/bs_seterrorstate.c
+U libowfat/buffer/bs_skip.c
+U libowfat/buffer/buffer.3
+U libowfat/buffer/buffer_0.c
+U libowfat/buffer/buffer_0small.c
+U libowfat/buffer/buffer_1.c
+U libowfat/buffer/buffer_1small.c
+U libowfat/buffer/buffer_2.c
+U libowfat/buffer/buffer_close.3
+U libowfat/buffer/buffer_close.c
+U libowfat/buffer/buffer_feed.3
+U libowfat/buffer/buffer_feed.c
+U libowfat/buffer/buffer_flush.3
+U libowfat/buffer/buffer_flush.c
+U libowfat/buffer/buffer_free.c
+U libowfat/buffer/buffer_fromarray.3
+U libowfat/buffer/buffer_fromarray.c
+U libowfat/buffer/buffer_frombuf.3
+U libowfat/buffer/buffer_frombuf.c
+
+
+U libowfat/buffer/buffer_fromsa.3
+U libowfat/buffer/buffer_fromsa.c
+U libowfat/buffer/buffer_get.3
+U libowfat/buffer/buffer_get.c
+U libowfat/buffer/buffer_get_new_token_sa.3
+U libowfat/buffer/buffer_get_new_token_sa.c
+U libowfat/buffer/buffer_get_new_token_sa_pred.3
+U libowfat/buffer/buffer_get_new_token_sa_pred.c
+U libowfat/buffer/buffer_get_token.3
+U libowfat/buffer/buffer_get_token.c
+U libowfat/buffer/buffer_get_token_pred.3
+U libowfat/buffer/buffer_get_token_pred.c
+U libowfat/buffer/buffer_get_token_sa.3
+U libowfat/buffer/buffer_get_token_sa.c
+U libowfat/buffer/buffer_get_token_sa_pred.3
+U libowfat/buffer/buffer_get_token_sa_pred.c
+U libowfat/buffer/buffer_getc.3
+U libowfat/buffer/buffer_getc.c
+U libowfat/buffer/buffer_getline.3
+U libowfat/buffer/buffer_getline.c
+U libowfat/buffer/buffer_getline_sa.3
+U libowfat/buffer/buffer_getline_sa.c
+U libowfat/buffer/buffer_getn.3
+U libowfat/buffer/buffer_getn.c
+U libowfat/buffer/buffer_getnewline_sa.3
+U libowfat/buffer/buffer_getnewline_sa.c
+U libowfat/buffer/buffer_init.3
+
+
+U libowfat/buffer/buffer_init.c
+U libowfat/buffer/buffer_init_allocbuf.c
+U libowfat/buffer/buffer_init_free.3
+U libowfat/buffer/buffer_init_free.c
+U libowfat/buffer/buffer_init_read.c
+U libowfat/buffer/buffer_init_read_allocbuf.c
+U libowfat/buffer/buffer_init_staticcontents.c
+U libowfat/buffer/buffer_init_staticcontents_free.c
+U libowfat/buffer/buffer_init_write.c
+U libowfat/buffer/buffer_init_write_allocbuf.c
+U libowfat/buffer/buffer_mmapread.3
+U libowfat/buffer/buffer_mmapread.c
+U libowfat/buffer/buffer_munmap.c
+U libowfat/buffer/buffer_peek.3
+U libowfat/buffer/buffer_peek.c
+U libowfat/buffer/buffer_peekc.3
+U libowfat/buffer/buffer_peekc.c
+U libowfat/buffer/buffer_put.3
+U libowfat/buffer/buffer_put.c
+U libowfat/buffer/buffer_put8long.3
+U libowfat/buffer/buffer_put8long.c
+U libowfat/buffer/buffer_putalign.3
+U libowfat/buffer/buffer_putalign.c
+U libowfat/buffer/buffer_puterror.3
+U libowfat/buffer/buffer_puterror.c
+U libowfat/buffer/buffer_puterror2.3
+U libowfat/buffer/buffer_puterror2.c
+U libowfat/buffer/buffer_putflush.3
+
+
+U libowfat/buffer/buffer_putflush.c
+U libowfat/buffer/buffer_putlong.3
+U libowfat/buffer/buffer_putlong.c
+U libowfat/buffer/buffer_putlonglong.3
+U libowfat/buffer/buffer_putlonglong.c
+U libowfat/buffer/buffer_putm.3
+U libowfat/buffer/buffer_putm_internal.c
+U libowfat/buffer/buffer_putm_internal_flush.c
+U libowfat/buffer/buffer_putnlflush.3
+U libowfat/buffer/buffer_putnlflush.c
+U libowfat/buffer/buffer_puts.3
+U libowfat/buffer/buffer_puts.c
+U libowfat/buffer/buffer_putsa.3
+U libowfat/buffer/buffer_putsa.c
+U libowfat/buffer/buffer_putsaflush.3
+U libowfat/buffer/buffer_putsaflush.c
+U libowfat/buffer/buffer_putsalign.3
+U libowfat/buffer/buffer_putsalign.c
+U libowfat/buffer/buffer_putsflush.3
+U libowfat/buffer/buffer_putsflush.c
+U libowfat/buffer/buffer_putspace.3
+U libowfat/buffer/buffer_putspace.c
+U libowfat/buffer/buffer_putulong.3
+U libowfat/buffer/buffer_putulong.c
+U libowfat/buffer/buffer_putulonglong.3
+U libowfat/buffer/buffer_putulonglong.c
+U libowfat/buffer/buffer_putxlong.3
+U libowfat/buffer/buffer_putxlong.c
+
+/cvs-bin checkout: Updating libowfat/byte
+
+
+U libowfat/buffer/buffer_seek.3
+U libowfat/buffer/buffer_seek.c
+U libowfat/buffer/buffer_stubborn.c
+U libowfat/buffer/buffer_stubborn2.c
+U libowfat/buffer/buffer_tosa.3
+U libowfat/buffer/buffer_tosa.c
+U libowfat/buffer/carp.3
+U libowfat/buffer/carpsys.3
+U libowfat/buffer/die.3
+U libowfat/buffer/diesys.3
+U libowfat/buffer/errmsg.7
+U libowfat/buffer/errmsg_iam.3
+U libowfat/buffer/errmsg_iam.c
+U libowfat/buffer/errmsg_info.c
+U libowfat/buffer/errmsg_infosys.c
+U libowfat/buffer/errmsg_puts.c
+U libowfat/buffer/errmsg_warn.c
+U libowfat/buffer/errmsg_warnsys.c
+U libowfat/buffer/errmsg_write.c
+U libowfat/buffer/msg.3
+U libowfat/buffer/msgsys.3
+U libowfat/buffer/prs_asciiz.c
+U libowfat/buffer/prs_asciiz_fixedlen.c
+U libowfat/buffer/prs_readblob.c
+U libowfat/buffer/prs_u16.c
+U libowfat/buffer/prs_u16_big.c
+U libowfat/buffer/prs_u32.c
+U libowfat/buffer/prs_u32_big.c
+U libowfat/buffer/prs_u64.c
+U libowfat/buffer/prs_u64_big.c
+
+/cvs-bin checkout: Updating libowfat/case
+
+U libowfat/byte/byte_chr.3
+U libowfat/byte/byte_chr.c
+U libowfat/byte/byte_copy.3
+U libowfat/byte/byte_copy.c
+U libowfat/byte/byte_copyr.3
+U libowfat/byte/byte_copyr.c
+U libowfat/byte/byte_diff.3
+U libowfat/byte/byte_diff.c
+U libowfat/byte/byte_equal.3
+U libowfat/byte/byte_equal_notimingattack.3
+U libowfat/byte/byte_equal_notimingattack.c
+U libowfat/byte/byte_rchr.3
+U libowfat/byte/byte_rchr.c
+U libowfat/byte/byte_start.3
+U libowfat/byte/byte_start.c
+U libowfat/byte/byte_starts.3
+U libowfat/byte/byte_starts.c
+U libowfat/byte/byte_zero.3
+U libowfat/byte/byte_zero.c
+
+/cvs-bin checkout: Updating libowfat/cdb
+
+U libowfat/case/case_diffb.3
+U libowfat/case/case_diffb.c
+U libowfat/case/case_diffs.3
+U libowfat/case/case_diffs.c
+U libowfat/case/case_lowerb.3
+U libowfat/case/case_lowerb.c
+U libowfat/case/case_lowers.3
+U libowfat/case/case_lowers.c
+U libowfat/case/case_starts.3
+U libowfat/case/case_starts.c
+
+/cvs-bin checkout: Updating libowfat/critbit
+
+U libowfat/cdb/cdb.c
+U libowfat/cdb/cdb_datalen.3
+U libowfat/cdb/cdb_datapos.3
+U libowfat/cdb/cdb_find.3
+U libowfat/cdb/cdb_firstkey.3
+U libowfat/cdb/cdb_free.3
+U libowfat/cdb/cdb_hash.c
+U libowfat/cdb/cdb_init.3
+U libowfat/cdb/cdb_keylen.3
+U libowfat/cdb/cdb_keypos.3
+U libowfat/cdb/cdb_make.c
+U libowfat/cdb/cdb_nextkey.3
+U libowfat/cdb/cdb_read.3
+U libowfat/cdb/cdb_successor.3
+U libowfat/cdb/cdb_traverse.c
+
+U libowfat/critbit/critbit.c
+U libowfat/critbit/critbit0_allprefixed.3
+U libowfat/critbit/critbit0_clear.3
+U libowfat/critbit/critbit0_contains.3
+U libowfat/critbit/critbit0_delete.3
+U libowfat/critbit/critbit0_insert.3
+
+/cvs-bin checkout: Updating libowfat/dns
+
+U libowfat/dns/dns_dfd.c
+U libowfat/dns/dns_domain.c
+U libowfat/dns/dns_dtda.c
+U libowfat/dns/dns_ip.c
+U libowfat/dns/dns_ip4.3
+U libowfat/dns/dns_ip4_packet.3
+U libowfat/dns/dns_ip4_qualify.3
+U libowfat/dns/dns_ip6.3
+U libowfat/dns/dns_ip6.c
+U libowfat/dns/dns_ip6_packet.3
+U libowfat/dns/dns_ip6_qualify.3
+U libowfat/dns/dns_ipq.c
+U libowfat/dns/dns_ipq6.c
+U libowfat/dns/dns_mx.3
+U libowfat/dns/dns_mx.c
+U libowfat/dns/dns_mx_packet.3
+U libowfat/dns/dns_name.c
+U libowfat/dns/dns_name4.3
+U libowfat/dns/dns_name4_domain.3
+U libowfat/dns/dns_name6.3
+U libowfat/dns/dns_name6_domain.3
+U libowfat/dns/dns_name_packet.3
+U libowfat/dns/dns_nd.c
+U libowfat/dns/dns_nd6.c
+U libowfat/dns/dns_packet.c
+U libowfat/dns/dns_random.c
+U libowfat/dns/dns_rcip.c
+U libowfat/dns/dns_rcrw.c
+U libowfat/dns/dns_resolve.c
+U libowfat/dns/dns_sortip.c
+U libowfat/dns/dns_sortip6.c
+U libowfat/dns/dns_transmit.c
+U libowfat/dns/dns_txt.3
+U libowfat/dns/dns_txt.c
+U libowfat/dns/dns_txt_packet.3
+
+/cvs-bin checkout: Updating libowfat/examples
+
+U libowfat/examples/buffer_getline.c
+U libowfat/examples/byte.c
+U libowfat/examples/str.c
+
+/cvs-bin checkout: Updating libowfat/fmt
+
+U libowfat/fmt/fmt_8long.3
+U libowfat/fmt/fmt_8long.c
+U libowfat/fmt/fmt_8longlong.c
+U libowfat/fmt/fmt_asn1derlength.3
+U libowfat/fmt/fmt_asn1derlength.c
+U libowfat/fmt/fmt_asn1dertag.3
+U libowfat/fmt/fmt_asn1dertag.c
+U libowfat/fmt/fmt_copybytes.3
+U libowfat/fmt/fmt_copybytes_sizeof_minus1.3
+U libowfat/fmt/fmt_double.3
+U libowfat/fmt/fmt_double.c
+U libowfat/fmt/fmt_escapecharc.c
+U libowfat/fmt/fmt_escapecharhtml.c
+U libowfat/fmt/fmt_escapecharjson.c
+U libowfat/fmt/fmt_escapecharquotedprintable.c
+U libowfat/fmt/fmt_escapecharquotedprintableutf8.c
+U libowfat/fmt/fmt_escapecharxml.c
+U libowfat/fmt/fmt_fill.3
+U libowfat/fmt/fmt_fill.c
+U libowfat/fmt/fmt_httpdate.3
+U libowfat/fmt/fmt_httpdate.c
+U libowfat/fmt/fmt_human.3
+U libowfat/fmt/fmt_human.c
+U libowfat/fmt/fmt_humank.3
+U libowfat/fmt/fmt_humank.c
+U libowfat/fmt/fmt_iso8601.3
+U libowfat/fmt/fmt_iso8601.c
+U libowfat/fmt/fmt_long.3
+U libowfat/fmt/fmt_long.c
+U libowfat/fmt/fmt_longlong.3
+U libowfat/fmt/fmt_longlong.c
+U libowfat/fmt/fmt_minus.3
+U libowfat/fmt/fmt_minus.c
+
+
+U libowfat/fmt/fmt_netstring.3
+U libowfat/fmt/fmt_netstring.c
+U libowfat/fmt/fmt_pad.3
+U libowfat/fmt/fmt_pad.c
+U libowfat/fmt/fmt_pb_double.c
+U libowfat/fmt/fmt_pb_float.c
+U libowfat/fmt/fmt_pb_int.c
+U libowfat/fmt/fmt_pb_sint.c
+U libowfat/fmt/fmt_pb_string.c
+U libowfat/fmt/fmt_pb_tag.c
+U libowfat/fmt/fmt_pb_type0_sint.c
+U libowfat/fmt/fmt_pb_type1_double.c
+U libowfat/fmt/fmt_pb_type1_fixed64.c
+U libowfat/fmt/fmt_pb_type2_string.c
+U libowfat/fmt/fmt_pb_type5_fixed32.c
+U libowfat/fmt/fmt_pb_type5_float.c
+U libowfat/fmt/fmt_plusminus.3
+U libowfat/fmt/fmt_plusminus.c
+U libowfat/fmt/fmt_str.3
+U libowfat/fmt/fmt_str.c
+U libowfat/fmt/fmt_strm.3
+U libowfat/fmt/fmt_strm_alloca.3
+U libowfat/fmt/fmt_strm_internal.c
+U libowfat/fmt/fmt_strm_malloc.3
+U libowfat/fmt/fmt_strn.3
+U libowfat/fmt/fmt_strn.c
+U libowfat/fmt/fmt_tohex.c
+U libowfat/fmt/fmt_uint.3
+U libowfat/fmt/fmt_uint0.3
+U libowfat/fmt/fmt_ulong.3
+U libowfat/fmt/fmt_ulong.c
+U libowfat/fmt/fmt_ulong0.3
+U libowfat/fmt/fmt_ulong0.c
+U libowfat/fmt/fmt_ulonglong.3
+U 
+
+libowfat/fmt/fmt_ulonglong.c
+U libowfat/fmt/fmt_utf8.3
+U libowfat/fmt/fmt_utf8.c
+U libowfat/fmt/fmt_varint.c
+U libowfat/fmt/fmt_xlong.3
+U libowfat/fmt/fmt_xlong.c
+U libowfat/fmt/fmt_xlonglong.3
+U libowfat/fmt/fmt_xlonglong.c
+U libowfat/fmt/fmt_xmlescape.c
+
+/cvs-bin checkout: Updating libowfat/io
+
+U libowfat/io/io_appendfile.3
+U libowfat/io/io_appendfile.c
+U libowfat/io/io_block.3
+U libowfat/io/io_block.c
+U libowfat/io/io_canread.3
+U libowfat/io/io_canread.c
+U libowfat/io/io_canwrite.3
+U libowfat/io/io_canwrite.c
+U libowfat/io/io_check.3
+U libowfat/io/io_check.c
+U libowfat/io/io_close.3
+U libowfat/io/io_close.c
+U libowfat/io/io_closeonexec.3
+U libowfat/io/io_closeonexec.c
+U libowfat/io/io_createfile.3
+U libowfat/io/io_createfile.c
+U libowfat/io/io_debugstring.c
+U libowfat/io/io_dontwantread.3
+U libowfat/io/io_dontwantread.c
+U libowfat/io/io_dontwantwrite.3
+U libowfat/io/io_dontwantwrite.c
+U libowfat/io/io_eagain.3
+U libowfat/io/io_eagain.c
+U libowfat/io/io_eagain_read.c
+U libowfat/io/io_eagain_write.c
+U libowfat/io/io_fd.3
+U libowfat/io/io_fd.c
+U libowfat/io/io_fd_canwrite.3
+U libowfat/io/io_fd_flags.3
+U libowfat/io/io_finishandshutdown.3
+U libowfat/io/io_finishandshutdown.c
+U libowfat/io/io_getcookie.3
+U libowfat/io/io_getcookie.c
+U libowfat/io/io_mmapwritefile.c
+U libowfat/io/io_nonblock.3
+U libowfat/io/io_nonblock.c
+
+
+U libowfat/io/io_passfd.3
+U libowfat/io/io_passfd.c
+U libowfat/io/io_pipe.3
+U libowfat/io/io_pipe.c
+U libowfat/io/io_readfile.3
+U libowfat/io/io_readfile.c
+U libowfat/io/io_readwritefile.3
+U libowfat/io/io_readwritefile.c
+U libowfat/io/io_receivefd.3
+U libowfat/io/io_receivefd.c
+U libowfat/io/io_sendfile.3
+U libowfat/io/io_sendfile.c
+U libowfat/io/io_setcookie.3
+U libowfat/io/io_setcookie.c
+U libowfat/io/io_sigpipe.c
+U libowfat/io/io_socketpair.3
+U libowfat/io/io_socketpair.c
+U libowfat/io/io_timedout.c
+U libowfat/io/io_timeout.3
+U libowfat/io/io_timeout.c
+U libowfat/io/io_timeouted.3
+U libowfat/io/io_timeouted.c
+U libowfat/io/io_tryread.3
+U libowfat/io/io_tryread.c
+U libowfat/io/io_tryreadtimeout.3
+U libowfat/io/io_tryreadtimeout.c
+U libowfat/io/io_trywrite.3
+U libowfat/io/io_trywrite.c
+U libowfat/io/io_trywritetimeout.3
+U libowfat/io/io_trywritetimeout.c
+U libowfat/io/io_wait.3
+U libowfat/io/io_wait.c
+U libowfat/io/io_waitread.3
+U libowfat/io/io_waitread.c
+U libowfat/io/io_waituntil.3
+U libowfat/io/io_waituntil.c
+
+
+U libowfat/io/io_waituntil2.c
+U libowfat/io/io_waitwrite.c
+U libowfat/io/io_wantread.3
+U libowfat/io/io_wantread.c
+U libowfat/io/io_wantwrite.3
+U libowfat/io/io_wantwrite.c
+U libowfat/io/iob_addbuf.3
+U libowfat/io/iob_addbuf.c
+U libowfat/io/iob_addbuf_free.3
+U libowfat/io/iob_addbuf_free.c
+U libowfat/io/iob_addbuf_internal.c
+U libowfat/io/iob_addbuf_munmap.c
+U libowfat/io/iob_addfile.3
+U libowfat/io/iob_addfile.c
+U libowfat/io/iob_addfile_close.3
+U libowfat/io/iob_addfile_close.c
+U libowfat/io/iob_adds.3
+U libowfat/io/iob_adds.c
+U libowfat/io/iob_adds_free.3
+U libowfat/io/iob_adds_free.c
+U libowfat/io/iob_bytesleft.3
+U libowfat/io/iob_bytesleft.c
+U libowfat/io/iob_free.3
+U libowfat/io/iob_free.c
+U libowfat/io/iob_new.3
+U libowfat/io/iob_new.c
+U libowfat/io/iob_prefetch.3
+U libowfat/io/iob_prefetch.c
+U libowfat/io/iob_reset.3
+U libowfat/io/iob_reset.c
+U libowfat/io/iob_send.3
+U libowfat/io/iob_send.c
+U libowfat/io/iob_write.3
+U libowfat/io/iob_write.c
+U libowfat/io/iom_abort.3
+U libowfat/io/iom_abort.c
+U libowfat/io/iom_add.3
+
+
+U libowfat/io/iom_add.c
+U libowfat/io/iom_init.3
+U libowfat/io/iom_init.c
+U libowfat/io/iom_wait.3
+U libowfat/io/iom_wait.c
+
+/cvs-bin checkout: Updating libowfat/libowfat
+
+/cvs-bin checkout: Updating libowfat/mmap
+
+U libowfat/mmap/mmap_private.3
+U libowfat/mmap/mmap_private.c
+U libowfat/mmap/mmap_read.3
+U libowfat/mmap/mmap_read.c
+U libowfat/mmap/mmap_readat.3
+U libowfat/mmap/mmap_readat.c
+U libowfat/mmap/mmap_shared.3
+U libowfat/mmap/mmap_shared.c
+U libowfat/mmap/mmap_unmap.3
+U libowfat/mmap/mmap_unmap.c
+
+/cvs-bin checkout: Updating libowfat/mult
+
+/cvs-bin checkout: Updating libowfat/open
+
+U libowfat/mult/add_of.3
+U libowfat/mult/assign.3
+U libowfat/mult/imult16.3
+U libowfat/mult/imult16.c
+U libowfat/mult/imult32.3
+U libowfat/mult/imult32.c
+U libowfat/mult/imult64.3
+U libowfat/mult/imult64.c
+U libowfat/mult/range_arrayinbuf.3
+U libowfat/mult/range_arrayinbuf.c
+U libowfat/mult/range_bufinbuf.3
+U libowfat/mult/range_ptrinbuf.3
+U libowfat/mult/range_str2inbuf.3
+U libowfat/mult/range_str2inbuf.c
+U libowfat/mult/range_str4inbuf.3
+U libowfat/mult/range_str4inbuf.c
+U libowfat/mult/range_strinbuf.3
+U libowfat/mult/range_strinbuf.c
+U libowfat/mult/range_validbuf.3
+U libowfat/mult/rangecheck.3
+U libowfat/mult/sub_of.3
+U libowfat/mult/umult16.3
+U libowfat/mult/umult16.c
+U libowfat/mult/umult32.3
+U libowfat/mult/umult32.c
+U libowfat/mult/umult64.3
+U libowfat/mult/umult64.c
+
+U libowfat/open/open_append.3
+U libowfat/open/open_append.c
+U libowfat/open/open_excl.3
+U libowfat/open/open_excl.c
+U libowfat/open/open_read.3
+U libowfat/open/open_read.c
+U libowfat/open/open_rw.3
+U libowfat/open/open_rw.c
+U libowfat/open/open_trunc.3
+U libowfat/open/open_trunc.c
+U libowfat/open/open_write.3
+U libowfat/open/open_write.c
+U libowfat/open/openreadclose.3
+U libowfat/open/openreadclose.c
+U libowfat/open/readclose.3
+U libowfat/open/readclose.c
+U libowfat/open/readclose_append.3
+
+/cvs-bin checkout: Updating libowfat/scan
+
+U libowfat/scan/scan_8int.3
+U libowfat/scan/scan_8int.c
+U libowfat/scan/scan_8long.3
+U libowfat/scan/scan_8long.c
+U libowfat/scan/scan_8longlong.c
+U libowfat/scan/scan_8longn.c
+U libowfat/scan/scan_8short.3
+U libowfat/scan/scan_8short.c
+U libowfat/scan/scan_asn1derlength.3
+U libowfat/scan/scan_asn1derlength.c
+U libowfat/scan/scan_asn1derlengthvalue.3
+U libowfat/scan/scan_asn1dertag.3
+U libowfat/scan/scan_asn1dertag.c
+U libowfat/scan/scan_charsetnskip.3
+U libowfat/scan/scan_charsetnskip.c
+U libowfat/scan/scan_double.3
+U libowfat/scan/scan_double.c
+U libowfat/scan/scan_fromhex.c
+U libowfat/scan/scan_httpdate.3
+U libowfat/scan/scan_httpdate.c
+U libowfat/scan/scan_int.3
+U libowfat/scan/scan_int.c
+U libowfat/scan/scan_iso8601.3
+U libowfat/scan/scan_iso8601.c
+U libowfat/scan/scan_long.3
+U libowfat/scan/scan_long.c
+U libowfat/scan/scan_longlong.3
+U libowfat/scan/scan_longlong.c
+U libowfat/scan/scan_longn.c
+U libowfat/scan/scan_netstring.3
+U libowfat/scan/scan_netstring.c
+U libowfat/scan/scan_noncharsetnskip.3
+U libowfat/scan/scan_noncharsetnskip.c
+
+
+U libowfat/scan/scan_nonwhitenskip.3
+U libowfat/scan/scan_nonwhitenskip.c
+U libowfat/scan/scan_pb_tag.c
+U libowfat/scan/scan_pb_type0_sint.c
+U libowfat/scan/scan_pb_type1_double.c
+U libowfat/scan/scan_pb_type1_fixed64.c
+U libowfat/scan/scan_pb_type2_stringlen.c
+U libowfat/scan/scan_pb_type5_fixed32.c
+U libowfat/scan/scan_pb_type5_float.c
+U libowfat/scan/scan_plusminus.3
+U libowfat/scan/scan_plusminus.c
+U libowfat/scan/scan_short.3
+U libowfat/scan/scan_short.c
+U libowfat/scan/scan_uint.3
+U libowfat/scan/scan_uint.c
+U libowfat/scan/scan_ulong.3
+U libowfat/scan/scan_ulong.c
+U libowfat/scan/scan_ulonglong.3
+U libowfat/scan/scan_ulonglong.c
+U libowfat/scan/scan_ulongn.c
+U libowfat/scan/scan_ushort.3
+U libowfat/scan/scan_ushort.c
+U libowfat/scan/scan_utf8.3
+U libowfat/scan/scan_utf8.c
+U libowfat/scan/scan_utf8_sem.3
+U libowfat/scan/scan_utf8_sem.c
+U libowfat/scan/scan_varint.c
+U libowfat/scan/scan_whitenskip.3
+U libowfat/scan/scan_whitenskip.c
+U libowfat/scan/scan_xint.3
+U libowfat/scan/scan_xint.c
+U libowfat/scan/scan_xlong.3
+
+/cvs-bin checkout: Updating libowfat/socket
+
+
+U libowfat/scan/scan_xlong.c
+U libowfat/scan/scan_xlonglong.3
+U libowfat/scan/scan_xlonglong.c
+U libowfat/scan/scan_xlongn.c
+U libowfat/scan/scan_xshort.3
+U libowfat/scan/scan_xshort.c
+
+U libowfat/socket/fmt_ip4.3
+U libowfat/socket/fmt_ip4.c
+U libowfat/socket/fmt_ip6.3
+U libowfat/socket/fmt_ip6.c
+U libowfat/socket/fmt_ip6_flat.3
+U libowfat/socket/fmt_ip6_flat.c
+U libowfat/socket/fmt_ip6c.3
+U libowfat/socket/fmt_ip6c.c
+U libowfat/socket/fmt_ip6if.3
+U libowfat/socket/fmt_ip6if.c
+U libowfat/socket/fmt_ip6ifc.3
+U libowfat/socket/fmt_ip6ifc.c
+U libowfat/socket/init.c
+U libowfat/socket/scan_ip4.3
+U libowfat/socket/scan_ip4.c
+U libowfat/socket/scan_ip6.3
+U libowfat/socket/scan_ip6.c
+U libowfat/socket/scan_ip6_flat.3
+U libowfat/socket/scan_ip6_flat.c
+U libowfat/socket/scan_ip6if.3
+U libowfat/socket/scan_ip6if.c
+U libowfat/socket/socket_accept4.3
+U libowfat/socket/socket_accept4.c
+U libowfat/socket/socket_accept4_flags.c
+U libowfat/socket/socket_accept4_makenonblocking.3
+U libowfat/socket/socket_accept4_makenonblocking.c
+U libowfat/socket/socket_accept4_makenonblocking_setcloseonexec.3
+U libowfat/socket/socket_accept4_makenonblocking_setcloseonexec.c
+U libowfat/socket/socket_accept4_setcloseonexec.3
+U 
+
+libowfat/socket/socket_accept4_setcloseonexec.c
+U libowfat/socket/socket_accept6.3
+U libowfat/socket/socket_accept6.c
+U libowfat/socket/socket_accept6_flags.c
+U libowfat/socket/socket_accept6_makenonblocking.3
+U libowfat/socket/socket_accept6_makenonblocking.c
+U libowfat/socket/socket_accept6_makenonblocking_setcloseonexec.3
+U libowfat/socket/socket_accept6_makenonblocking_setcloseonexec.c
+U libowfat/socket/socket_accept6_setcloseonexec.3
+U libowfat/socket/socket_accept6_setcloseonexec.c
+U libowfat/socket/socket_bind4.3
+U libowfat/socket/socket_bind4.c
+U libowfat/socket/socket_bind4_reuse.3
+U libowfat/socket/socket_bind4_reuse.c
+U libowfat/socket/socket_bind6.3
+U libowfat/socket/socket_bind6.c
+U libowfat/socket/socket_bind6_reuse.3
+U libowfat/socket/socket_bind6_reuse.c
+U libowfat/socket/socket_broadcast.3
+U libowfat/socket/socket_broadcast.c
+U libowfat/socket/socket_connect4.3
+U libowfat/socket/socket_connect4.c
+U libowfat/socket/socket_connect6.3
+U libowfat/socket/socket_connect6.c
+U libowfat/socket/socket_connected.3
+
+
+U libowfat/socket/socket_connected.c
+U libowfat/socket/socket_deferaccept.c
+U libowfat/socket/socket_fastopen.3
+U libowfat/socket/socket_fastopen.c
+U libowfat/socket/socket_fastopen_connect4.3
+U libowfat/socket/socket_fastopen_connect4.c
+U libowfat/socket/socket_fastopen_connect6.3
+U libowfat/socket/socket_fastopen_connect6.c
+U libowfat/socket/socket_getifidx.3
+U libowfat/socket/socket_getifidx.c
+U libowfat/socket/socket_getifname.3
+U libowfat/socket/socket_getifname.c
+U libowfat/socket/socket_ip4loopback.c
+U libowfat/socket/socket_listen.3
+U libowfat/socket/socket_listen.c
+U libowfat/socket/socket_local4.3
+U libowfat/socket/socket_local4.c
+U libowfat/socket/socket_local6.3
+U libowfat/socket/socket_local6.c
+U libowfat/socket/socket_mchopcount6.3
+U libowfat/socket/socket_mchopcount6.c
+U libowfat/socket/socket_mcjoin4.3
+U libowfat/socket/socket_mcjoin4.c
+U libowfat/socket/socket_mcjoin6.3
+U libowfat/socket/socket_mcjoin6.c
+U libowfat/socket/socket_mcleave4.3
+U libowfat/socket/socket_mcleave4.c
+U libowfat/socket/socket_mcleave6.3
+
+
+U libowfat/socket/socket_mcleave6.c
+U libowfat/socket/socket_mcloop4.3
+U libowfat/socket/socket_mcloop4.c
+U libowfat/socket/socket_mcloop6.3
+U libowfat/socket/socket_mcloop6.c
+U libowfat/socket/socket_mcttl4.3
+U libowfat/socket/socket_mcttl4.c
+U libowfat/socket/socket_noipv6.c
+U libowfat/socket/socket_quickack.3
+U libowfat/socket/socket_quickack.c
+U libowfat/socket/socket_recv4.3
+U libowfat/socket/socket_recv4.c
+U libowfat/socket/socket_recv6.3
+U libowfat/socket/socket_recv6.c
+U libowfat/socket/socket_remote4.3
+U libowfat/socket/socket_remote4.c
+U libowfat/socket/socket_remote6.3
+U libowfat/socket/socket_remote6.c
+U libowfat/socket/socket_sctp4.3
+U libowfat/socket/socket_sctp4.c
+U libowfat/socket/socket_sctp4b.3
+U libowfat/socket/socket_sctp4b.c
+U libowfat/socket/socket_sctp6.3
+U libowfat/socket/socket_sctp6.c
+U libowfat/socket/socket_sctp6b.3
+U libowfat/socket/socket_sctp6b.c
+U libowfat/socket/socket_send4.3
+U libowfat/socket/socket_send4.c
+U libowfat/socket/socket_send6.3
+U libowfat/socket/socket_send6.c
+U 
+
+libowfat/socket/socket_tcp4.3
+U libowfat/socket/socket_tcp4.c
+U libowfat/socket/socket_tcp4b.3
+U libowfat/socket/socket_tcp4b.c
+U libowfat/socket/socket_tcp6.3
+U libowfat/socket/socket_tcp6.c
+U libowfat/socket/socket_tcp6b.3
+U libowfat/socket/socket_tcp6b.c
+U libowfat/socket/socket_tryreservein.c
+U libowfat/socket/socket_udp4.3
+U libowfat/socket/socket_udp4.c
+U libowfat/socket/socket_udp6.3
+U libowfat/socket/socket_udp6.c
+U libowfat/socket/socket_v4mappedprefix.c
+U libowfat/socket/socket_v6any.c
+U libowfat/socket/socket_v6loopback.c
+
+/cvs-bin checkout: Updating libowfat/str
+
+U libowfat/str/str_chr.3
+U libowfat/str/str_chr.c
+U libowfat/str/str_copy.3
+U libowfat/str/str_copy.c
+U libowfat/str/str_diff.3
+U libowfat/str/str_diff.c
+U libowfat/str/str_diffn.3
+U libowfat/str/str_diffn.c
+U libowfat/str/str_equal.3
+U libowfat/str/str_len.3
+U libowfat/str/str_len.c
+U libowfat/str/str_rchr.3
+U libowfat/str/str_rchr.c
+U libowfat/str/str_start.3
+U libowfat/str/str_start.c
+
+/cvs-bin checkout: Updating libowfat/stralloc
+
+U libowfat/stralloc/stralloc_0.3
+U libowfat/stralloc/stralloc_append.3
+U libowfat/stralloc/stralloc_append.c
+U libowfat/stralloc/stralloc_cat.3
+U libowfat/stralloc/stralloc_cat.c
+U libowfat/stralloc/stralloc_catb.3
+U libowfat/stralloc/stralloc_catb.c
+U libowfat/stralloc/stralloc_catlong0.3
+U libowfat/stralloc/stralloc_catlong0.c
+U libowfat/stralloc/stralloc_catm.3
+U libowfat/stralloc/stralloc_catm_internal.c
+U libowfat/stralloc/stralloc_cats.3
+U libowfat/stralloc/stralloc_cats.c
+U libowfat/stralloc/stralloc_catulong0.3
+U libowfat/stralloc/stralloc_catulong0.c
+U libowfat/stralloc/stralloc_chomp.3
+U libowfat/stralloc/stralloc_chomp.c
+U libowfat/stralloc/stralloc_chop.3
+U libowfat/stralloc/stralloc_chop.c
+U libowfat/stralloc/stralloc_copy.3
+U libowfat/stralloc/stralloc_copy.c
+U libowfat/stralloc/stralloc_copyb.3
+U libowfat/stralloc/stralloc_copyb.c
+U libowfat/stralloc/stralloc_copym.3
+U libowfat/stralloc/stralloc_copys.3
+U libowfat/stralloc/stralloc_copys.c
+U libowfat/stralloc/stralloc_diff.3
+U libowfat/stralloc/stralloc_diff.c
+
+/cvs-bin checkout: Updating libowfat/tai
+
+
+U libowfat/stralloc/stralloc_diffs.3
+U libowfat/stralloc/stralloc_diffs.c
+U libowfat/stralloc/stralloc_free.3
+U libowfat/stralloc/stralloc_free.c
+U libowfat/stralloc/stralloc_init.3
+U libowfat/stralloc/stralloc_init.c
+U libowfat/stralloc/stralloc_ready.3
+U libowfat/stralloc/stralloc_ready.c
+U libowfat/stralloc/stralloc_readyplus.3
+U libowfat/stralloc/stralloc_readyplus.c
+U libowfat/stralloc/stralloc_starts.3
+U libowfat/stralloc/stralloc_starts.c
+U libowfat/stralloc/stralloc_zero.3
+U libowfat/stralloc/stralloc_zero.c
+
+U libowfat/tai/tai_add.3
+U libowfat/tai/tai_add.c
+U libowfat/tai/tai_approx.3
+U libowfat/tai/tai_less.3
+U libowfat/tai/tai_now.3
+U libowfat/tai/tai_now.c
+U libowfat/tai/tai_pack.3
+U libowfat/tai/tai_pack.c
+U libowfat/tai/tai_sub.3
+U libowfat/tai/tai_sub.c
+U libowfat/tai/tai_uint.c
+U libowfat/tai/tai_unpack.3
+U libowfat/tai/tai_unpack.c
+
+/cvs-bin checkout: Updating libowfat/taia
+
+U libowfat/taia/taia_add.3
+U libowfat/taia/taia_add.c
+U libowfat/taia/taia_addsec.3
+U libowfat/taia/taia_addsec.c
+U libowfat/taia/taia_approx.3
+U libowfat/taia/taia_approx.c
+U libowfat/taia/taia_frac.3
+U libowfat/taia/taia_frac.c
+U libowfat/taia/taia_half.c
+U libowfat/taia/taia_less.3
+U libowfat/taia/taia_less.c
+U libowfat/taia/taia_now.3
+U libowfat/taia/taia_now.c
+U libowfat/taia/taia_pack.3
+U libowfat/taia/taia_pack.c
+U libowfat/taia/taia_sub.3
+U libowfat/taia/taia_sub.c
+U libowfat/taia/taia_tai.3
+U libowfat/taia/taia_tai.c
+U libowfat/taia/taia_uint.3
+U libowfat/taia/taia_uint.c
+U libowfat/taia/taia_unpack.3
+U libowfat/taia/taia_unpack.c
+
+/cvs-bin checkout: Updating libowfat/test
+
+U libowfat/test/array.c
+U libowfat/test/b64decode.c
+U libowfat/test/b64encode.c
+U libowfat/test/buffer_1.c
+U libowfat/test/buffer_fromsa.c
+U libowfat/test/buffer_mmap.c
+U libowfat/test/buffer_tosa.c
+U libowfat/test/byte_copy.c
+U libowfat/test/cas.c
+U libowfat/test/cdbget2.c
+U libowfat/test/cescape.c
+U libowfat/test/client.c
+U libowfat/test/dllink.c
+U libowfat/test/dnsip.c
+U libowfat/test/fdpassing.c
+U libowfat/test/fmt.c
+U libowfat/test/fmt_httpdate.c
+U libowfat/test/fmt_human.c
+U libowfat/test/fmt_ip6.c
+U libowfat/test/fmt_iso8691.c
+U libowfat/test/fmt_long.c
+U libowfat/test/fmt_longlong.c
+U libowfat/test/fmt_strm_alloca.c
+U libowfat/test/httpd.c
+U libowfat/test/io.c
+U libowfat/test/io2.c
+U libowfat/test/io3.c
+U libowfat/test/io4.c
+U libowfat/test/io5.c
+U libowfat/test/iob.c
+U libowfat/test/iom.c
+U libowfat/test/json.c
+U libowfat/test/marshal.c
+U libowfat/test/mult.c
+U libowfat/test/netstring.c
+U libowfat/test/protobuf.c
+U libowfat/test/proxy.c
+U libowfat/test/range.c
+U libowfat/test/readhttp.c
+U libowfat/test/scan.c
+
+
+U libowfat/test/scan_long.c
+U libowfat/test/server.c
+U libowfat/test/stralloc_buffer.c
+U libowfat/test/stralloc_chomp.c
+U libowfat/test/textcode.c
+U libowfat/test/uint.c
+U libowfat/test/unurl.c
+U libowfat/test/urlencode.c
+U libowfat/test/utf8.c
+U libowfat/test/uudecode.c
+U libowfat/test/vd.c
+
+/cvs-bin checkout: Updating libowfat/textcode
+
+
+
+U libowfat/textcode/base64.c
+U libowfat/textcode/base64url.c
+U libowfat/textcode/fmt_base64.c
+U libowfat/textcode/fmt_base64url.c
+U libowfat/textcode/fmt_cescape.c
+U libowfat/textcode/fmt_foldwhitespace.c
+U libowfat/textcode/fmt_hexdump.c
+U libowfat/textcode/fmt_html.c
+U libowfat/textcode/fmt_html_tagarg.c
+U libowfat/textcode/fmt_jsonescape.c
+U libowfat/textcode/fmt_ldapescape.c
+U libowfat/textcode/fmt_ldapescape2.c
+U libowfat/textcode/fmt_quotedprintable.c
+U libowfat/textcode/fmt_to_array.c
+U libowfat/textcode/fmt_to_sa.c
+U libowfat/textcode/fmt_tofrom_array.c
+U libowfat/textcode/fmt_urlencoded.c
+U libowfat/textcode/fmt_uuencoded.c
+U libowfat/textcode/fmt_xml.c
+U libowfat/textcode/fmt_yenc.c
+U libowfat/textcode/scan_base64.3
+U libowfat/textcode/scan_base64.c
+U libowfat/textcode/scan_base64url.3
+U libowfat/textcode/scan_base64url.c
+U libowfat/textcode/scan_cescape.3
+U libowfat/textcode/scan_cescape.c
+U libowfat/textcode/scan_hexdump.3
+U libowfat/textcode/scan_hexdump.c
+U libowfat/textcode/scan_html.c
+U libowfat/textcode/scan_jsonescape.3
+
+/cvs-bin checkout: Updating libowfat/uint
+
+
+U libowfat/textcode/scan_jsonescape.c
+U libowfat/textcode/scan_ldapescape.3
+U libowfat/textcode/scan_ldapescape.c
+U libowfat/textcode/scan_quotedprintable.c
+U libowfat/textcode/scan_to_array.c
+U libowfat/textcode/scan_to_sa.c
+U libowfat/textcode/scan_tofrom_array.c
+U libowfat/textcode/scan_urlencoded.3
+U libowfat/textcode/scan_urlencoded.c
+U libowfat/textcode/scan_urlencoded2.3
+U libowfat/textcode/scan_uuencoded.3
+U libowfat/textcode/scan_uuencoded.c
+U libowfat/textcode/scan_yenc.c
+
+U libowfat/uint/uint16_pack.3
+U libowfat/uint/uint16_pack.c
+U libowfat/uint/uint16_pack_big.3
+U libowfat/uint/uint16_pack_big.c
+U libowfat/uint/uint16_read.3
+U libowfat/uint/uint16_read.c
+U libowfat/uint/uint16_read_big.3
+U libowfat/uint/uint16_read_big.c
+U libowfat/uint/uint16_unpack.3
+U libowfat/uint/uint16_unpack.c
+U libowfat/uint/uint16_unpack_big.3
+U libowfat/uint/uint16_unpack_big.c
+U libowfat/uint/uint32_pack.3
+U libowfat/uint/uint32_pack.c
+U libowfat/uint/uint32_pack_big.3
+U libowfat/uint/uint32_pack_big.c
+U libowfat/uint/uint32_read.3
+U libowfat/uint/uint32_read.c
+U libowfat/uint/uint32_read_big.3
+U libowfat/uint/uint32_read_big.c
+U libowfat/uint/uint32_unpack.3
+U libowfat/uint/uint32_unpack.c
+U libowfat/uint/uint32_unpack_big.3
+U libowfat/uint/uint32_unpack_big.c
+U libowfat/uint/uint64_pack.3
+U libowfat/uint/uint64_pack.c
+U libowfat/uint/uint64_pack_big.3
+U libowfat/uint/uint64_pack_big.c
+U libowfat/uint/uint64_read.3
+U libowfat/uint/uint64_read.c
+U libowfat/uint/uint64_read_big.3
+U libowfat/uint/uint64_read_big.c
+
+
+U libowfat/uint/uint64_unpack.3
+U libowfat/uint/uint64_unpack.c
+U libowfat/uint/uint64_unpack_big.3
+U libowfat/uint/uint64_unpack_big.c
+
+/cvs-bin checkout: Updating libowfat/unix
+
+U libowfat/unix/iopause.3
+U libowfat/unix/iopause.c
+U libowfat/unix/ndelay_off.3
+U libowfat/unix/ndelay_off.c
+U libowfat/unix/ndelay_on.3
+U libowfat/unix/ndelay_on.c
+U libowfat/unix/winsock2errno.c
+
+rm -f iopause.h
+
+if  gcc -pipe -W -Wall -Wextra  -D_REENTRANT -O2 -I. -o t trypoll.c >/dev/null 2>&1; then cp iopause.h2 iopause.h; else cp iopause.h1 iopause.h; fi
+
+rm -f t
+
+rm -f havealloca.h
+
+echo "#include <stdlib.h>" > havealloca.h
+
+if  gcc -pipe -W -Wall -Wextra  -D_REENTRANT -O2 -I. -c tryalloca.c -DA >/dev/null 2>&1; then echo "#include <alloca.h>"; fi >> havealloca.h
+
+if  gcc -pipe -W -Wall -Wextra  -D_REENTRANT -O2 -I. -c tryalloca.c -DB >/dev/null 2>&1; then echo "#include <malloc.h>"; fi >> havealloca.h
+
+rm -f tryalloca.o
+
+ln -f buffer.h byte.h fmt.h ip4.h ip6.h mmap.h scan.h socket.h str.h stralloc.h uint16.h uint32.h uint64.h open.h textcode.h tai.h taia.h dns.h iopause.h case.h openreadclose.h readclose.h ndelay.h array.h io.h safemult.h iob.h havealloca.h errmsg.h cdb.h cdb_make.h rangecheck.h iarray.h va_narg.h isset.h compiletimeassert.h critbit.h parse.h compiler.h libowfat/
+
+rm -f haveuint128.h
+
+if  gcc -pipe -W -Wall -Wextra  -D_REENTRANT -O2 -I. -c tryuint128.c >/dev/null 2>&1; then echo "#define HAVE_UINT128"; fi > haveuint128.h
+
+rm -f tryuint128.o
+
+gcc -g -o ent ent.c -I.
+
+gcc -c byte/byte_chr.c -pipe -W -Wall -Wextra  -D_REENTRANT -O3  -I.
+
+gcc -c byte/byte_copy.c -pipe -W -Wall -Wextra  -D_REENTRANT -O3  -I.
+
+gcc -c byte/byte_copyr.c -pipe -W -Wall -Wextra  -D_REENTRANT -O3  -I.
+
+gcc -c byte/byte_diff.c -pipe -W -Wall -Wextra  -D_REENTRANT -O3  -I.
+
+gcc -c byte/byte_equal_notimingattack.c -pipe -W -Wall -Wextra  -D_REENTRANT -O3  -I.
+
+gcc -c byte/byte_rchr.c -pipe -W -Wall -Wextra  -D_REENTRANT -O3  -I.
+
+gcc -c byte/byte_start.c -pipe -W -Wall -Wextra  -D_REENTRANT -O3  -I.
+
+gcc -c byte/byte_starts.c -pipe -W -Wall -Wextra  -D_REENTRANT -O3  -I.
+
+gcc -c byte/byte_zero.c -pipe -W -Wall -Wextra  -D_REENTRANT -O3  -I.
+
+ar cru byte.a byte_chr.o byte_copy.o byte_copyr.o byte_diff.o byte_equal_notimingattack.o byte_rchr.o byte_start.o byte_starts.o byte_zero.o
+
+ar: `u' modifier ignored since `D' is the default (see `U')
+
+ranlib byte.a
+
+gcc -c fmt/fmt_8long.c -pipe -W -Wall -Wextra  -D_REENTRANT -O2 -I.
+
+gcc -c fmt/fmt_8longlong.c -pipe -W -Wall -Wextra  -D_REENTRANT -O2 -I.
+
+gcc -c fmt/fmt_asn1derlength.c -pipe -W -Wall -Wextra  -D_REENTRANT -O2 -I.
+
+gcc -c fmt/fmt_asn1dertag.c -pipe -W -Wall -Wextra  -D_REENTRANT -O2 -I.
+
+gcc -c fmt/fmt_double.c -pipe -W -Wall -Wextra  -D_REENTRANT -O2 -I.
+
+gcc -c fmt/fmt_escapecharc.c -pipe -W -Wall -Wextra  -D_REENTRANT -O2 -I.
+
+gcc -c fmt/fmt_escapecharhtml.c -pipe -W -Wall -Wextra  -D_REENTRANT -O2 -I.
+
+gcc -c fmt/fmt_escapecharjson.c -pipe -W -Wall -Wextra  -D_REENTRANT -O2 -I.
+
+gcc -c fmt/fmt_escapecharquotedprintable.c -pipe -W -Wall -Wextra  -D_REENTRANT -O2 -I.
+
+gcc -c fmt/fmt_escapecharquotedprintableutf8.c -pipe -W -Wall -Wextra  -D_REENTRANT -O2 -I.
+
+gcc -c fmt/fmt_escapecharxml.c -pipe -W -Wall -Wextra  -D_REENTRANT -O2 -I.
+
+gcc -c fmt/fmt_fill.c -pipe -W -Wall -Wextra  -D_REENTRANT -O2 -I.
+
+gcc -c fmt/fmt_httpdate.c -pipe -W -Wall -Wextra  -D_REENTRANT -O2 -I.
+
+gcc -c fmt/fmt_human.c -pipe -W -Wall -Wextra  -D_REENTRANT -O2 -I.
+
+gcc -c fmt/fmt_humank.c -pipe -W -Wall -Wextra  -D_REENTRANT -O2 -I.
+
+gcc -c fmt/fmt_iso8601.c -pipe -W -Wall -Wextra  -D_REENTRANT -O2 -I.
+
+gcc -c fmt/fmt_long.c -pipe -W -Wall -Wextra  -D_REENTRANT -O2 -I.
+
+gcc -c fmt/fmt_longlong.c -pipe -W -Wall -Wextra  -D_REENTRANT -O2 -I.
+
+gcc -c fmt/fmt_minus.c -pipe -W -Wall -Wextra  -D_REENTRANT -O2 -I.
+
+gcc -c fmt/fmt_netstring.c -pipe -W -Wall -Wextra  -D_REENTRANT -O2 -I.
+
+gcc -c fmt/fmt_pad.c -pipe -W -Wall -Wextra  -D_REENTRANT -O2 -I.
+
+gcc -c fmt/fmt_pb_double.c -pipe -W -Wall -Wextra  -D_REENTRANT -O2 -I.
+
+gcc -c fmt/fmt_pb_float.c -pipe -W -Wall -Wextra  -D_REENTRANT -O2 -I.
+
+gcc -c fmt/fmt_pb_int.c -pipe -W -Wall -Wextra  -D_REENTRANT -O2 -I.
+
+gcc -c fmt/fmt_pb_sint.c -pipe -W -Wall -Wextra  -D_REENTRANT -O2 -I.
+
+gcc -c fmt/fmt_pb_string.c -pipe -W -Wall -Wextra  -D_REENTRANT -O2 -I.
+
+gcc -c fmt/fmt_pb_tag.c -pipe -W -Wall -Wextra  -D_REENTRANT -O2 -I.
+
+gcc -c fmt/fmt_pb_type0_sint.c -pipe -W -Wall -Wextra  -D_REENTRANT -O2 -I.
+
+gcc -c fmt/fmt_pb_type1_double.c -pipe -W -Wall -Wextra  -D_REENTRANT -O2 -I.
+
+gcc -c fmt/fmt_pb_type1_fixed64.c -pipe -W -Wall -Wextra  -D_REENTRANT -O2 -I.
+
+gcc -c fmt/fmt_pb_type2_string.c -pipe -W -Wall -Wextra  -D_REENTRANT -O2 -I.
+
+gcc -c fmt/fmt_pb_type5_fixed32.c -pipe -W -Wall -Wextra  -D_REENTRANT -O2 -I.
+
+gcc -c fmt/fmt_pb_type5_float.c -pipe -W -Wall -Wextra  -D_REENTRANT -O2 -I.
+
+gcc -c fmt/fmt_plusminus.c -pipe -W -Wall -Wextra  -D_REENTRANT -O2 -I.
+
+gcc -c fmt/fmt_str.c -pipe -W -Wall -Wextra  -D_REENTRANT -O2 -I.
+
+gcc -c fmt/fmt_strm_internal.c -pipe -W -Wall -Wextra  -D_REENTRANT -O2 -I.
+
+gcc -c fmt/fmt_strn.c -pipe -W -Wall -Wextra  -D_REENTRANT -O2 -I.
+
+gcc -c fmt/fmt_tohex.c -pipe -W -Wall -Wextra  -D_REENTRANT -O2 -I.
+
+gcc -c fmt/fmt_ulong.c -pipe -W -Wall -Wextra  -D_REENTRANT -O2 -I.
+
+gcc -c fmt/fmt_ulong0.c -pipe -W -Wall -Wextra  -D_REENTRANT -O2 -I.
+
+gcc -c fmt/fmt_ulonglong.c -pipe -W -Wall -Wextra  -D_REENTRANT -O2 -I.
+
+gcc -c fmt/fmt_utf8.c -pipe -W -Wall -Wextra  -D_REENTRANT -O2 -I.
+
+gcc -c fmt/fmt_varint.c -pipe -W -Wall -Wextra  -D_REENTRANT -O2 -I.
+
+rm -f haveinline.h
+
+if !  gcc -pipe -W -Wall -Wextra  -D_REENTRANT -O2 -I. -c tryinline.c >/dev/null 2>&1; then echo "#define inline"; fi > haveinline.h
+
+rm -f tryinline.o
+
+gcc -c fmt/fmt_xlong.c -pipe -W -Wall -Wextra  -D_REENTRANT -O2 -I.
+
+gcc -c fmt/fmt_xlonglong.c -pipe -W -Wall -Wextra  -D_REENTRANT -O2 -I.
+
+gcc -c fmt/fmt_xmlescape.c -pipe -W -Wall -Wextra  -D_REENTRANT -O2 -I.
+
+ar cru fmt.a fmt_8long.o fmt_8longlong.o fmt_asn1derlength.o fmt_asn1dertag.o fmt_double.o fmt_escapecharc.o fmt_escapecharhtml.o fmt_escapecharjson.o fmt_escapecharquotedprintable.o fmt_escapecharquotedprintableutf8.o fmt_escapecharxml.o fmt_fill.o fmt_httpdate.o fmt_human.o fmt_humank.o fmt_iso8601.o fmt_long.o fmt_longlong.o fmt_minus.o fmt_netstring.o fmt_pad.o fmt_pb_double.o fmt_pb_float.o fmt_pb_int.o fmt_pb_sint.o fmt_pb_string.o fmt_pb_tag.o fmt_pb_type0_sint.o fmt_pb_type1_double.o fmt_pb_type1_fixed64.o fmt_pb_type2_string.o fmt_pb_type5_fixed32.o fmt_pb_type5_float.o fmt_plusminus.o fmt_str.o fmt_strm_internal.o fmt_strn.o fmt_tohex.o fmt_ulong.o fmt_ulong0.o fmt_ulonglong.o fmt_utf8.o fmt_varint.o fmt_xlong.o fmt_xlonglong.o fmt_xmlescape.o
+
+ar: 
+
+`u' modifier ignored since `D' is the default (see `U')
+
+
+
+ranlib fmt.a
+
+gcc -c scan/scan_8int.c -pipe -W -Wall -Wextra  -D_REENTRANT -O2 -I.
+
+gcc -c scan/scan_8long.c -pipe -W -Wall -Wextra  -D_REENTRANT -O2 -I.
+
+gcc -c scan/scan_8longlong.c -pipe -W -Wall -Wextra  -D_REENTRANT -O2 -I.
+
+gcc -c scan/scan_8longn.c -pipe -W -Wall -Wextra  -D_REENTRANT -O2 -I.
+
+gcc -c scan/scan_8short.c -pipe -W -Wall -Wextra  -D_REENTRANT -O2 -I.
+
+gcc -c scan/scan_asn1derlength.c -pipe -W -Wall -Wextra  -D_REENTRANT -O2 -I.
+
+gcc -c scan/scan_asn1dertag.c -pipe -W -Wall -Wextra  -D_REENTRANT -O2 -I.
+
+gcc -c scan/scan_charsetnskip.c -pipe -W -Wall -Wextra  -D_REENTRANT -O2 -I.
+
+gcc -c scan/scan_double.c -pipe -W -Wall -Wextra  -D_REENTRANT -O2 -I.
+
+gcc -c scan/scan_fromhex.c -pipe -W -Wall -Wextra  -D_REENTRANT -O2 -I.
+
+gcc -c scan/scan_httpdate.c -pipe -W -Wall -Wextra  -D_REENTRANT -O2 -I.
+
+gcc -c scan/scan_int.c -pipe -W -Wall -Wextra  -D_REENTRANT -O2 -I.
+
+gcc -c scan/scan_iso8601.c -pipe -W -Wall -Wextra  -D_REENTRANT -O2 -I.
+
+gcc -c scan/scan_long.c -pipe -W -Wall -Wextra  -D_REENTRANT -O2 -I.
+
+gcc -c scan/scan_longlong.c -pipe -W -Wall -Wextra  -D_REENTRANT -O2 -I.
+
+gcc -c scan/scan_longn.c -pipe -W -Wall -Wextra  -D_REENTRANT -O2 -I.
+
+gcc -c scan/scan_netstring.c -pipe -W -Wall -Wextra  -D_REENTRANT -O2 -I.
+
+gcc -c scan/scan_noncharsetnskip.c -pipe -W -Wall -Wextra  -D_REENTRANT -O2 -I.
+
+gcc -c scan/scan_nonwhitenskip.c -pipe -W -Wall -Wextra  -D_REENTRANT -O2 -I.
+
+gcc -c scan/scan_pb_tag.c -pipe -W -Wall -Wextra  -D_REENTRANT -O2 -I.
+
+gcc -c scan/scan_pb_type0_sint.c -pipe -W -Wall -Wextra  -D_REENTRANT -O2 -I.
+
+gcc -c scan/scan_pb_type1_double.c -pipe -W -Wall -Wextra  -D_REENTRANT -O2 -I.
+
+gcc -c scan/scan_pb_type1_fixed64.c -pipe -W -Wall -Wextra  -D_REENTRANT -O2 -I.
+
+gcc -c scan/scan_pb_type2_stringlen.c -pipe -W -Wall -Wextra  -D_REENTRANT -O2 -I.
+
+gcc -c scan/scan_pb_type5_fixed32.c -pipe -W -Wall -Wextra  -D_REENTRANT -O2 -I.
+
+gcc -c scan/scan_pb_type5_float.c -pipe -W -Wall -Wextra  -D_REENTRANT -O2 -I.
+
+gcc -c scan/scan_plusminus.c -pipe -W -Wall -Wextra  -D_REENTRANT -O2 -I.
+
+gcc -c scan/scan_short.c -pipe -W -Wall -Wextra  -D_REENTRANT -O2 -I.
+
+gcc -c scan/scan_uint.c -pipe -W -Wall -Wextra  -D_REENTRANT -O2 -I.
+
+gcc -c scan/scan_ulong.c -pipe -W -Wall -Wextra  -D_REENTRANT -O2 -I.
+
+gcc -c scan/scan_ulonglong.c -pipe -W -Wall -Wextra  -D_REENTRANT -O2 -I.
+
+gcc -c scan/scan_ulongn.c -pipe -W -Wall -Wextra  -D_REENTRANT -O2 -I.
+
+gcc -c scan/scan_ushort.c -pipe -W -Wall -Wextra  -D_REENTRANT -O2 -I.
+
+gcc -c scan/scan_utf8.c -pipe -W -Wall -Wextra  -D_REENTRANT -O2 -I.
+
+gcc -c scan/scan_utf8_sem.c -pipe -W -Wall -Wextra  -D_REENTRANT -O2 -I.
+
+gcc -c scan/scan_varint.c -pipe -W -Wall -Wextra  -D_REENTRANT -O2 -I.
+
+gcc -c scan/scan_whitenskip.c -pipe -W -Wall -Wextra  -D_REENTRANT -O2 -I.
+
+gcc -c scan/scan_xint.c -pipe -W -Wall -Wextra  -D_REENTRANT -O2 -I.
+
+gcc -c scan/scan_xlong.c -pipe -W -Wall -Wextra  -D_REENTRANT -O2 -I.
+
+gcc -c scan/scan_xlonglong.c -pipe -W -Wall -Wextra  -D_REENTRANT -O2 -I.
+
+gcc -c scan/scan_xlongn.c -pipe -W -Wall -Wextra  -D_REENTRANT -O2 -I.
+
+gcc -c scan/scan_xshort.c -pipe -W -Wall -Wextra  -D_REENTRANT -O2 -I.
+
+ar cru scan.a scan_8int.o scan_8long.o scan_8longlong.o scan_8longn.o scan_8short.o scan_asn1derlength.o scan_asn1dertag.o scan_charsetnskip.o scan_double.o scan_fromhex.o scan_httpdate.o scan_int.o scan_iso8601.o scan_long.o scan_longlong.o scan_longn.o scan_netstring.o scan_noncharsetnskip.o scan_nonwhitenskip.o scan_pb_tag.o scan_pb_type0_sint.o scan_pb_type1_double.o scan_pb_type1_fixed64.o scan_pb_type2_stringlen.o scan_pb_type5_fixed32.o scan_pb_type5_float.o scan_plusminus.o scan_short.o scan_uint.o scan_ulong.o scan_ulonglong.o scan_ulongn.o scan_ushort.o scan_utf8.o scan_utf8_sem.o scan_varint.o scan_whitenskip.o scan_xint.o scan_xlong.o scan_xlonglong.o scan_xlongn.o scan_xshort.o
+
+ar: `u' modifier ignored since `D' is the default (see `U')
+
+
+
+ranlib scan.a
+
+gcc -c str/str_chr.c -pipe -W -Wall -Wextra  -D_REENTRANT -O2 -I.
+
+gcc -c str/str_copy.c -pipe -W -Wall -Wextra  -D_REENTRANT -O2 -I.
+
+gcc -c str/str_diff.c -pipe -W -Wall -Wextra  -D_REENTRANT -O2 -I.
+
+gcc -c str/str_diffn.c -pipe -W -Wall -Wextra  -D_REENTRANT -O2 -I.
+
+gcc -c str/str_len.c -pipe -W -Wall -Wextra  -D_REENTRANT -O2 -I.
+
+gcc -c str/str_rchr.c -pipe -W -Wall -Wextra  -D_REENTRANT -O2 -I.
+
+gcc -c str/str_start.c -pipe -W -Wall -Wextra  -D_REENTRANT -O2 -I.
+
+ar cru str.a str_chr.o str_copy.o str_diff.o str_diffn.o str_len.o str_rchr.o str_start.o
+
+ar: `u' modifier ignored since `D' is the default (see `U')
+
+
+
+ranlib str.a
+
+gcc -c uint/uint16_pack.c -pipe -W -Wall -Wextra  -D_REENTRANT -O2 -I.
+
+gcc -c uint/uint16_pack_big.c -pipe -W -Wall -Wextra  -D_REENTRANT -O2 -I.
+
+gcc -c uint/uint16_read.c -pipe -W -Wall -Wextra  -D_REENTRANT -O2 -I.
+
+gcc -c uint/uint16_read_big.c -pipe -W -Wall -Wextra  -D_REENTRANT -O2 -I.
+
+gcc -c uint/uint16_unpack.c -pipe -W -Wall -Wextra  -D_REENTRANT -O2 -I.
+
+gcc -c uint/uint16_unpack_big.c -pipe -W -Wall -Wextra  -D_REENTRANT -O2 -I.
+
+gcc -c uint/uint32_pack.c -pipe -W -Wall -Wextra  -D_REENTRANT -O2 -I.
+
+gcc -c uint/uint32_pack_big.c -pipe -W -Wall -Wextra  -D_REENTRANT -O2 -I.
+
+gcc -c uint/uint32_read.c -pipe -W -Wall -Wextra  -D_REENTRANT -O2 -I.
+
+gcc -c uint/uint32_read_big.c -pipe -W -Wall -Wextra  -D_REENTRANT -O2 -I.
+
+gcc -c uint/uint32_unpack.c -pipe -W -Wall -Wextra  -D_REENTRANT -O2 -I.
+
+gcc -c uint/uint32_unpack_big.c -pipe -W -Wall -Wextra  -D_REENTRANT -O2 -I.
+
+gcc -c uint/uint64_pack.c -pipe -W -Wall -Wextra  -D_REENTRANT -O2 -I.
+
+gcc -c uint/uint64_pack_big.c -pipe -W -Wall -Wextra  -D_REENTRANT -O2 -I.
+
+gcc -c uint/uint64_read.c -pipe -W -Wall -Wextra  -D_REENTRANT -O2 -I.
+
+gcc -c uint/uint64_read_big.c -pipe -W -Wall -Wextra  -D_REENTRANT -O2 -I.
+
+gcc -c uint/uint64_unpack.c -pipe -W -Wall -Wextra  -D_REENTRANT -O2 -I.
+
+gcc -c uint/uint64_unpack_big.c -pipe -W -Wall -Wextra  -D_REENTRANT -O2 -I.
+
+ar cru uint.a uint16_pack.o uint16_pack_big.o uint16_read.o uint16_read_big.o uint16_unpack.o uint16_unpack_big.o uint32_pack.o uint32_pack_big.o uint32_read.o uint32_read_big.o uint32_unpack.o uint32_unpack_big.o uint64_pack.o uint64_pack_big.o uint64_read.o uint64_read_big.o uint64_unpack.o uint64_unpack_big.o
+
+ar: `u' modifier ignored since `D' is the default (see `U')
+
+ranlib uint.a
+
+gcc -c open/open_append.c -pipe -W -Wall -Wextra  -D_REENTRANT -O2 -I.
+
+gcc -c open/open_excl.c -pipe -W -Wall -Wextra  -D_REENTRANT -O2 -I.
+
+gcc -c open/open_read.c -pipe -W -Wall -Wextra  -D_REENTRANT -O2 -I.
+
+gcc -c open/open_rw.c -pipe -W -Wall -Wextra  -D_REENTRANT -O2 -I.
+
+gcc -c open/open_trunc.c -pipe -W -Wall -Wextra  -D_REENTRANT -O2 -I.
+
+gcc -c open/open_write.c -pipe -W -Wall -Wextra  -D_REENTRANT -O2 -I.
+
+gcc -c open/openreadclose.c -pipe -W -Wall -Wextra  -D_REENTRANT -O2 -I.
+
+gcc -c open/readclose.c -pipe -W -Wall -Wextra  -D_REENTRANT -O2 -I.
+
+ar cru open.a open_append.o open_excl.o open_read.o open_rw.o open_trunc.o open_write.o openreadclose.o readclose.o
+
+ar: `u' modifier ignored since `D' is the default (see `U')
+
+ranlib open.a
+
+gcc -c stralloc/stralloc_append.c -pipe -W -Wall -Wextra  -D_REENTRANT -O2 -I.
+
+gcc -c stralloc/stralloc_cat.c -pipe -W -Wall -Wextra  -D_REENTRANT -O2 -I.
+
+gcc -c stralloc/stralloc_catb.c -pipe -W -Wall -Wextra  -D_REENTRANT -O2 -I.
+
+gcc -c stralloc/stralloc_catlong0.c -pipe -W -Wall -Wextra  -D_REENTRANT -O2 -I.
+
+gcc -c stralloc/stralloc_catm_internal.c -pipe -W -Wall -Wextra  -D_REENTRANT -O2 -I.
+
+gcc -c stralloc/stralloc_cats.c -pipe -W -Wall -Wextra  -D_REENTRANT -O2 -I.
+
+gcc -c stralloc/stralloc_catulong0.c -pipe -W -Wall -Wextra  -D_REENTRANT -O2 -I.
+
+gcc -c stralloc/stralloc_chomp.c -pipe -W -Wall -Wextra  -D_REENTRANT -O2 -I.
+
+gcc -c stralloc/stralloc_chop.c -pipe -W -Wall -Wextra  -D_REENTRANT -O2 -I.
+
+gcc -c stralloc/stralloc_copy.c -pipe -W -Wall -Wextra  -D_REENTRANT -O2 -I.
+
+gcc -c stralloc/stralloc_copyb.c -pipe -W -Wall -Wextra  -D_REENTRANT -O2 -I.
+
+gcc -c stralloc/stralloc_copys.c -pipe -W -Wall -Wextra  -D_REENTRANT -O2 -I.
+
+gcc -c stralloc/stralloc_diff.c -pipe -W -Wall -Wextra  -D_REENTRANT -O2 -I.
+
+gcc -c stralloc/stralloc_diffs.c -pipe -W -Wall -Wextra  -D_REENTRANT -O2 -I.
+
+gcc -c stralloc/stralloc_free.c -pipe -W -Wall -Wextra  -D_REENTRANT -O2 -I.
+
+gcc -c stralloc/stralloc_init.c -pipe -W -Wall -Wextra  -D_REENTRANT -O2 -I.
+
+gcc -c stralloc/stralloc_ready.c -pipe -W -Wall -Wextra  -D_REENTRANT -O2 -I.
+
+gcc -c stralloc/stralloc_readyplus.c -pipe -W -Wall -Wextra  -D_REENTRANT -O2 -I.
+
+gcc -c stralloc/stralloc_starts.c -pipe -W -Wall -Wextra  -D_REENTRANT -O2 -I.
+
+gcc -c stralloc/stralloc_zero.c -pipe -W -Wall -Wextra  -D_REENTRANT -O2 -I.
+
+ar cru stralloc.a stralloc_append.o stralloc_cat.o stralloc_catb.o stralloc_catlong0.o stralloc_catm_internal.o stralloc_cats.o stralloc_catulong0.o stralloc_chomp.o stralloc_chop.o stralloc_copy.o stralloc_copyb.o stralloc_copys.o stralloc_diff.o stralloc_diffs.o stralloc_free.o stralloc_init.o stralloc_ready.o stralloc_readyplus.o stralloc_starts.o stralloc_zero.o
+
+ar: `u' modifier ignored since `D' is the default (see `U')
+
+ranlib stralloc.a
+
+rm -f select.h
+
+if  gcc -pipe -W -Wall -Wextra  -D_REENTRANT -O2 -I. -c trysysel.c >/dev/null 2>&1; then cp select.h2 select.h; else cp select.h1 select.h; fi
+
+rm -f trysysel.o
+
+gcc -c unix/iopause.c -pipe -W -Wall -Wextra  -D_REENTRANT -O2 -I.
+
+In file included from ./iopause.h:9,
+                 from unix/iopause.c:2:
+/usr/include/sys/poll.h:1:2: warning: #warning redirecting incorrect #include <sys/poll.h> to <poll.h> [-Wcpp]
+    1 | #warning redirecting incorrect #include <sys/poll.h> to <poll.h>
+      |  ^~~~~~~
+
+gcc -c unix/ndelay_off.c -pipe -W -Wall -Wextra  -D_REENTRANT -O2 -I.
+
+gcc -c unix/ndelay_on.c -pipe -W -Wall -Wextra  -D_REENTRANT -O2 -I.
+
+gcc -c unix/winsock2errno.c -pipe -W -Wall -Wextra  -D_REENTRANT -O2 -I.
+
+ar cru unix.a iopause.o ndelay_off.o ndelay_on.o winsock2errno.o
+
+ar: `u' modifier ignored since `D' is the default (see `U')
+
+ranlib unix.a
+
+gcc -c socket/fmt_ip4.c -pipe -W -Wall -Wextra  -D_REENTRANT -O2 -I.
+
+gcc -c socket/fmt_ip6.c -pipe -W -Wall -Wextra  -D_REENTRANT -O2 -I.
+
+gcc -c socket/fmt_ip6_flat.c -pipe -W -Wall -Wextra  -D_REENTRANT -O2 -I.
+
+gcc -c socket/fmt_ip6c.c -pipe -W -Wall -Wextra  -D_REENTRANT -O2 -I.
+
+gcc -c socket/fmt_ip6if.c -pipe -W -Wall -Wextra  -D_REENTRANT -O2 -I.
+
+gcc -c socket/fmt_ip6ifc.c -pipe -W -Wall -Wextra  -D_REENTRANT -O2 -I.
+
+gcc -c socket/init.c -pipe -W -Wall -Wextra  -D_REENTRANT -O2 -I.
+
+gcc -c socket/scan_ip4.c -pipe -W -Wall -Wextra  -D_REENTRANT -O2 -I.
+
+gcc -c socket/scan_ip6.c -pipe -W -Wall -Wextra  -D_REENTRANT -O2 -I.
+
+gcc -c socket/scan_ip6_flat.c -pipe -W -Wall -Wextra  -D_REENTRANT -O2 -I.
+
+gcc -c socket/scan_ip6if.c -pipe -W -Wall -Wextra  -D_REENTRANT -O2 -I.
+
+rm -f havesl.h
+
+if !  gcc -pipe -W -Wall -Wextra  -D_REENTRANT -O2 -I. -o t trysl.c >/dev/null 2>&1; then echo "typedef int socklen_t;"; fi > havesl.h
+
+rm -f t
+
+gcc -c socket/socket_accept4.c -pipe -W -Wall -Wextra  -D_REENTRANT -O2 -I.
+
+rm -f haveaccept4.h
+
+if  gcc -pipe -W -Wall -Wextra  -D_REENTRANT -O2 -I. -c tryaccept4.c >/dev/null 2>&1; then echo "#define HAVE_ACCEPT4"; fi > haveaccept4.h
+
+rm -f tryaccept4.o
+
+gcc -c socket/socket_accept4_flags.c -pipe -W -Wall -Wextra  -D_REENTRANT -O2 -I.
+
+gcc -c socket/socket_accept4_makenonblocking.c -pipe -W -Wall -Wextra  -D_REENTRANT -O2 -I.
+
+gcc -c socket/socket_accept4_makenonblocking_setcloseonexec.c -pipe -W -Wall -Wextra  -D_REENTRANT -O2 -I.
+
+gcc -c socket/socket_accept4_setcloseonexec.c -pipe -W -Wall -Wextra  -D_REENTRANT -O2 -I.
+
+rm -f haveip6.h
+
+if  gcc -pipe -W -Wall -Wextra  -D_REENTRANT -O2 -I. -c tryip6.c >/dev/null 2>&1; then echo "#define LIBC_HAS_IP6"; fi > haveip6.h
+
+rm -f tryip6.o
+
+rm -f havescope.h
+
+if  gcc -pipe -W -Wall -Wextra  -D_REENTRANT -O2 -I. -c tryscope.c >/dev/null 2>&1; then echo "#define LIBC_HAS_SCOPE_ID"; fi > havescope.h
+
+rm -f tryscope.o
+
+gcc -c socket/socket_accept6.c -pipe -W -Wall -Wextra  -D_REENTRANT -O2 -I.
+
+gcc -c socket/socket_accept6_flags.c -pipe -W -Wall -Wextra  -D_REENTRANT -O2 -I.
+
+gcc -c socket/socket_accept6_makenonblocking.c -pipe -W -Wall -Wextra  -D_REENTRANT -O2 -I.
+
+gcc -c socket/socket_accept6_makenonblocking_setcloseonexec.c -pipe -W -Wall -Wextra  -D_REENTRANT -O2 -I.
+
+gcc -c socket/socket_accept6_setcloseonexec.c -pipe -W -Wall -Wextra  -D_REENTRANT -O2 -I.
+
+gcc -c socket/socket_bind4.c -pipe -W -Wall -Wextra  -D_REENTRANT -O2 -I.
+
+gcc -c socket/socket_bind4_reuse.c -pipe -W -Wall -Wextra  -D_REENTRANT -O2 -I.
+
+gcc -c socket/socket_bind6.c -pipe -W -Wall -Wextra  -D_REENTRANT -O2 -I.
+
+gcc -c socket/socket_bind6_reuse.c -pipe -W -Wall -Wextra  -D_REENTRANT -O2 -I.
+
+gcc -c socket/socket_broadcast.c -pipe -W -Wall -Wextra  -D_REENTRANT -O2 -I.
+
+gcc -c socket/socket_connect4.c -pipe -W -Wall -Wextra  -D_REENTRANT -O2 -I.
+
+gcc -c socket/socket_connect6.c -pipe -W -Wall -Wextra  -D_REENTRANT -O2 -I.
+
+gcc -c socket/socket_connected.c -pipe -W -Wall -Wextra  -D_REENTRANT -O2 -I.
+
+gcc -c socket/socket_deferaccept.c -pipe -W -Wall -Wextra  -D_REENTRANT -O2 -I.
+
+gcc -c socket/socket_fastopen.c -pipe -W -Wall -Wextra  -D_REENTRANT -O2 -I.
+
+gcc -c socket/socket_fastopen_connect4.c -pipe -W -Wall -Wextra  -D_REENTRANT -O2 -I.
+
+gcc -c socket/socket_fastopen_connect6.c -pipe -W -Wall -Wextra  -D_REENTRANT -O2 -I.
+
+rm -f haven2i.h
+
+if  gcc -pipe -W -Wall -Wextra  -D_REENTRANT -O2 -I. -o t tryn2i.c >/dev/null 2>&1; then echo "#define HAVE_N2I"; fi > haven2i.h
+
+rm -f t
+
+gcc -c socket/socket_getifidx.c -pipe -W -Wall -Wextra  -D_REENTRANT -O2 -I.
+
+gcc -c socket/socket_getifname.c -pipe -W -Wall -Wextra  -D_REENTRANT -O2 -I.
+
+gcc -c socket/socket_ip4loopback.c -pipe -W -Wall -Wextra  -D_REENTRANT -O2 -I.
+
+gcc -c socket/socket_listen.c -pipe -W -Wall -Wextra  -D_REENTRANT -O2 -I.
+
+gcc -c socket/socket_local4.c -pipe -W -Wall -Wextra  -D_REENTRANT -O2 -I.
+
+gcc -c socket/socket_local6.c -pipe -W -Wall -Wextra  -D_REENTRANT -O2 -I.
+
+gcc -c socket/socket_mchopcount6.c -pipe -W -Wall -Wextra  -D_REENTRANT -O2 -I.
+
+gcc -c socket/socket_mcjoin4.c -pipe -W -Wall -Wextra  -D_REENTRANT -O2 -I.
+
+gcc -c socket/socket_mcjoin6.c -pipe -W -Wall -Wextra  -D_REENTRANT -O2 -I.
+
+gcc -c socket/socket_mcleave4.c -pipe -W -Wall -Wextra  -D_REENTRANT -O2 -I.
+
+gcc -c socket/socket_mcleave6.c -pipe -W -Wall -Wextra  -D_REENTRANT -O2 -I.
+
+gcc -c socket/socket_mcloop4.c -pipe -W -Wall -Wextra  -D_REENTRANT -O2 -I.
+
+gcc -c socket/socket_mcloop6.c -pipe -W -Wall -Wextra  -D_REENTRANT -O2 -I.
+
+gcc -c socket/socket_mcttl4.c -pipe -W -Wall -Wextra  -D_REENTRANT -O2 -I.
+
+gcc -c socket/socket_noipv6.c -pipe -W -Wall -Wextra  -D_REENTRANT -O2 -I.
+
+gcc -c socket/socket_quickack.c -pipe -W -Wall -Wextra  -D_REENTRANT -O2 -I.
+
+gcc -c socket/socket_recv4.c -pipe -W -Wall -Wextra  -D_REENTRANT -O2 -I.
+
+gcc -c socket/socket_recv6.c -pipe -W -Wall -Wextra  -D_REENTRANT -O2 -I.
+
+gcc -c socket/socket_remote4.c -pipe -W -Wall -Wextra  -D_REENTRANT -O2 -I.
+
+gcc -c socket/socket_remote6.c -pipe -W -Wall -Wextra  -D_REENTRANT -O2 -I.
+
+gcc -c socket/socket_sctp4.c -pipe -W -Wall -Wextra  -D_REENTRANT -O2 -I.
+
+gcc -c socket/socket_sctp4b.c -pipe -W -Wall -Wextra  -D_REENTRANT -O2 -I.
+
+gcc -c socket/socket_sctp6.c -pipe -W -Wall -Wextra  -D_REENTRANT -O2 -I.
+
+gcc -c socket/socket_sctp6b.c -pipe -W -Wall -Wextra  -D_REENTRANT -O2 -I.
+
+gcc -c socket/socket_send4.c -pipe -W -Wall -Wextra  -D_REENTRANT -O2 -I.
+
+gcc -c socket/socket_send6.c -pipe -W -Wall -Wextra  -D_REENTRANT -O2 -I.
+
+gcc -c socket/socket_tcp4.c -pipe -W -Wall -Wextra  -D_REENTRANT -O2 -I.
+
+gcc -c socket/socket_tcp4b.c -pipe -W -Wall -Wextra  -D_REENTRANT -O2 -I.
+
+gcc -c socket/socket_tcp6.c -pipe -W -Wall -Wextra  -D_REENTRANT -O2 -I.
+
+gcc -c socket/socket_tcp6b.c -pipe -W -Wall -Wextra  -D_REENTRANT -O2 -I.
+
+gcc -c socket/socket_tryreservein.c -pipe -W -Wall -Wextra  -D_REENTRANT -O2 -I.
+
+gcc -c socket/socket_udp4.c -pipe -W -Wall -Wextra  -D_REENTRANT -O2 -I.
+
+gcc -c socket/socket_udp6.c -pipe -W -Wall -Wextra  -D_REENTRANT -O2 -I.
+
+gcc -c socket/socket_v4mappedprefix.c -pipe -W -Wall -Wextra  -D_REENTRANT -O2 -I.
+
+gcc -c socket/socket_v6any.c -pipe -W -Wall -Wextra  -D_REENTRANT -O2 -I.
+
+gcc -c socket/socket_v6loopback.c -pipe -W -Wall -Wextra  -D_REENTRANT -O2 -I.
+
+ar cru socket.a fmt_ip4.o fmt_ip6.o fmt_ip6_flat.o fmt_ip6c.o fmt_ip6if.o fmt_ip6ifc.o init.o scan_ip4.o scan_ip6.o scan_ip6_flat.o scan_ip6if.o socket_accept4.o socket_accept4_flags.o socket_accept4_makenonblocking.o socket_accept4_makenonblocking_setcloseonexec.o socket_accept4_setcloseonexec.o socket_accept6.o socket_accept6_flags.o socket_accept6_makenonblocking.o socket_accept6_makenonblocking_setcloseonexec.o socket_accept6_setcloseonexec.o socket_bind4.o socket_bind4_reuse.o socket_bind6.o socket_bind6_reuse.o socket_broadcast.o socket_connect4.o socket_connect6.o socket_connected.o socket_deferaccept.o socket_fastopen.o socket_fastopen_connect4.o socket_fastopen_connect6.o socket_getifidx.o socket_getifname.o socket_ip4loopback.o socket_listen.o socket_local4.o socket_local6.o socket_mchopcount6.o socket_mcjoin4.o socket_mcjoin6.o socket_mcleave4.o socket_mcleave6.o socket_mcloop4.o socket_mcloop6.o socket_mcttl4.o socket_noipv6.o socket_quickack.o socket_recv4.o socket_recv6.o socket_remote4.o socket_remote6.o socket_sctp4.o socket_sctp4b.o socket_sctp6.o socket_sctp6b.o socket_send4.o socket_send6.o socket_tcp4.o socket_tcp4b.o socket_tcp6.o socket_tcp6b.o socket_tryreservein.o socket_udp4.o socket_udp6.o socket_v4mappedprefix.o socket_v6any.o socket_v6loopback.o
+
+ar: `u' modifier ignored since `D' is the default (see `U')
+
+ranlib socket.a
+
+gcc -c buffer/bs_capacityassert.c -pipe -W -Wall -Wextra  -D_REENTRANT -O2 -I.
+
+gcc -c buffer/bs_capacitycheck.c -pipe -W -Wall -Wextra  -D_REENTRANT -O2 -I.
+
+gcc -c buffer/bs_capacityleft.c -pipe -W -Wall -Wextra  -D_REENTRANT -O2 -I.
+
+gcc -c buffer/bs_consumeleftovers.c -pipe -W -Wall -Wextra  -D_REENTRANT -O2 -I.
+
+gcc -c buffer/bs_err.c -pipe -W -Wall -Wextra  -D_REENTRANT -O2 -I.
+
+gcc -c buffer/bs_get.c -pipe -W -Wall -Wextra  -D_REENTRANT -O2 -I.
+
+gcc -c buffer/bs_init_bstream_size.c -pipe -W -Wall -Wextra  -D_REENTRANT -O2 -I.
+
+gcc -c buffer/bs_init_iobuf.c -pipe -W -Wall -Wextra  -D_REENTRANT -O2 -I.
+
+gcc -c buffer/bs_init_iobuf_size.c -pipe -W -Wall -Wextra  -D_REENTRANT -O2 -I.
+
+gcc -c buffer/bs_init_membuf.c -pipe -W -Wall -Wextra  -D_REENTRANT -O2 -I.
+
+gcc -c buffer/bs_nomoredataassert.c -pipe -W -Wall -Wextra  -D_REENTRANT -O2 -I.
+
+gcc -c buffer/bs_peek.c -pipe -W -Wall -Wextra  -D_REENTRANT -O2 -I.
+
+gcc -c buffer/bs_seterrorstate.c -pipe -W -Wall -Wextra  -D_REENTRANT -O2 -I.
+
+gcc -c buffer/bs_skip.c -pipe -W -Wall -Wextra  -D_REENTRANT -O2 -I.
+
+gcc -c buffer/buffer_0.c -pipe -W -Wall -Wextra  -D_REENTRANT -O2 -I.
+
+gcc -c buffer/buffer_0small.c -pipe -W -Wall -Wextra  -D_REENTRANT -O2 -I.
+
+gcc -c buffer/buffer_1.c -pipe -W -Wall -Wextra  -D_REENTRANT -O2 -I.
+
+gcc -c buffer/buffer_1small.c -pipe -W -Wall -Wextra  -D_REENTRANT -O2 -I.
+
+gcc -c buffer/buffer_2.c -pipe -W -Wall -Wextra  -D_REENTRANT -O2 -I.
+
+gcc -c buffer/buffer_close.c -pipe -W -Wall -Wextra  -D_REENTRANT -O2 -I.
+
+gcc -c buffer/buffer_feed.c -pipe -W -Wall -Wextra  -D_REENTRANT -O2 -I.
+
+gcc -c buffer/buffer_flush.c -pipe -W -Wall -Wextra  -D_REENTRANT -O2 -I.
+
+gcc -c buffer/buffer_free.c -pipe -W -Wall -Wextra  -D_REENTRANT -O2 -I.
+
+gcc -c buffer/buffer_fromarray.c -pipe -W -Wall -Wextra  -D_REENTRANT -O2 -I.
+
+gcc -c buffer/buffer_frombuf.c -pipe -W -Wall -Wextra  -D_REENTRANT -O2 -I.
+
+gcc -c buffer/buffer_fromsa.c -pipe -W -Wall -Wextra  -D_REENTRANT -O2 -I.
+
+gcc -c buffer/buffer_get.c -pipe -W -Wall -Wextra  -D_REENTRANT -O2 -I.
+
+gcc -c buffer/buffer_get_new_token_sa.c -pipe -W -Wall -Wextra  -D_REENTRANT -O2 -I.
+
+gcc -c buffer/buffer_get_new_token_sa_pred.c -pipe -W -Wall -Wextra  -D_REENTRANT -O2 -I.
+
+gcc -c buffer/buffer_get_token.c -pipe -W -Wall -Wextra  -D_REENTRANT -O2 -I.
+
+gcc -c buffer/buffer_get_token_pred.c -pipe -W -Wall -Wextra  -D_REENTRANT -O2 -I.
+
+gcc -c buffer/buffer_get_token_sa.c -pipe -W -Wall -Wextra  -D_REENTRANT -O2 -I.
+
+gcc -c buffer/buffer_get_token_sa_pred.c -pipe -W -Wall -Wextra  -D_REENTRANT -O2 -I.
+
+gcc -c buffer/buffer_getc.c -pipe -W -Wall -Wextra  -D_REENTRANT -O2 -I.
+
+gcc -c buffer/buffer_getline.c -pipe -W -Wall -Wextra  -D_REENTRANT -O2 -I.
+
+gcc -c buffer/buffer_getline_sa.c -pipe -W -Wall -Wextra  -D_REENTRANT -O2 -I.
+
+gcc -c buffer/buffer_getn.c -pipe -W -Wall -Wextra  -D_REENTRANT -O2 -I.
+
+gcc -c buffer/buffer_getnewline_sa.c -pipe -W -Wall -Wextra  -D_REENTRANT -O2 -I.
+
+gcc -c buffer/buffer_init.c -pipe -W -Wall -Wextra  -D_REENTRANT -O2 -I.
+
+gcc -c buffer/buffer_init_allocbuf.c -pipe -W -Wall -Wextra  -D_REENTRANT -O2 -I.
+
+gcc -c buffer/buffer_init_free.c -pipe -W -Wall -Wextra  -D_REENTRANT -O2 -I.
+
+gcc -c buffer/buffer_init_read.c -pipe -W -Wall -Wextra  -D_REENTRANT -O2 -I.
+
+gcc -c buffer/buffer_init_read_allocbuf.c -pipe -W -Wall -Wextra  -D_REENTRANT -O2 -I.
+
+gcc -c buffer/buffer_init_staticcontents.c -pipe -W -Wall -Wextra  -D_REENTRANT -O2 -I.
+
+gcc -c buffer/buffer_init_staticcontents_free.c -pipe -W -Wall -Wextra  -D_REENTRANT -O2 -I.
+
+gcc -c buffer/buffer_init_write.c -pipe -W -Wall -Wextra  -D_REENTRANT -O2 -I.
+
+gcc -c buffer/buffer_init_write_allocbuf.c -pipe -W -Wall -Wextra  -D_REENTRANT -O2 -I.
+
+gcc -c buffer/buffer_mmapread.c -pipe -W -Wall -Wextra  -D_REENTRANT -O2 -I.
+
+gcc -c buffer/buffer_munmap.c -pipe -W -Wall -Wextra  -D_REENTRANT -O2 -I.
+
+gcc -c buffer/buffer_peek.c -pipe -W -Wall -Wextra  -D_REENTRANT -O2 -I.
+
+gcc -c buffer/buffer_peekc.c -pipe -W -Wall -Wextra  -D_REENTRANT -O2 -I.
+
+gcc -c buffer/buffer_put.c -pipe -W -Wall -Wextra  -D_REENTRANT -O2 -I.
+
+gcc -c buffer/buffer_put8long.c -pipe -W -Wall -Wextra  -D_REENTRANT -O2 -I.
+
+gcc -c buffer/buffer_putalign.c -pipe -W -Wall -Wextra  -D_REENTRANT -O2 -I.
+
+gcc -c buffer/buffer_puterror.c -pipe -W -Wall -Wextra  -D_REENTRANT -O2 -I.
+
+gcc -c buffer/buffer_puterror2.c -pipe -W -Wall -Wextra  -D_REENTRANT -O2 -I.
+
+gcc -c buffer/buffer_putflush.c -pipe -W -Wall -Wextra  -D_REENTRANT -O2 -I.
+
+gcc -c buffer/buffer_putlong.c -pipe -W -Wall -Wextra  -D_REENTRANT -O2 -I.
+
+gcc -c buffer/buffer_putlonglong.c -pipe -W -Wall -Wextra  -D_REENTRANT -O2 -I.
+
+gcc -c buffer/buffer_putm_internal.c -pipe -W -Wall -Wextra  -D_REENTRANT -O2 -I.
+
+gcc -c buffer/buffer_putm_internal_flush.c -pipe -W -Wall -Wextra  -D_REENTRANT -O2 -I.
+
+gcc -c buffer/buffer_putnlflush.c -pipe -W -Wall -Wextra  -D_REENTRANT -O2 -I.
+
+gcc -c buffer/buffer_puts.c -pipe -W -Wall -Wextra  -D_REENTRANT -O2 -I.
+
+gcc -c buffer/buffer_putsa.c -pipe -W -Wall -Wextra  -D_REENTRANT -O2 -I.
+
+gcc -c buffer/buffer_putsaflush.c -pipe -W -Wall -Wextra  -D_REENTRANT -O2 -I.
+
+gcc -c buffer/buffer_putsalign.c -pipe -W -Wall -Wextra  -D_REENTRANT -O2 -I.
+
+gcc -c buffer/buffer_putsflush.c -pipe -W -Wall -Wextra  -D_REENTRANT -O2 -I.
+
+gcc -c buffer/buffer_putspace.c -pipe -W -Wall -Wextra  -D_REENTRANT -O2 -I.
+
+gcc -c buffer/buffer_putulong.c -pipe -W -Wall -Wextra  -D_REENTRANT -O2 -I.
+
+gcc -c buffer/buffer_putulonglong.c -pipe -W -Wall -Wextra  -D_REENTRANT -O2 -I.
+
+gcc -c buffer/buffer_putxlong.c -pipe -W -Wall -Wextra  -D_REENTRANT -O2 -I.
+
+gcc -c buffer/buffer_seek.c -pipe -W -Wall -Wextra  -D_REENTRANT -O2 -I.
+
+gcc -c buffer/buffer_stubborn.c -pipe -W -Wall -Wextra  -D_REENTRANT -O2 -I.
+
+gcc -c buffer/buffer_stubborn2.c -pipe -W -Wall -Wextra  -D_REENTRANT -O2 -I.
+
+gcc -c buffer/buffer_tosa.c -pipe -W -Wall -Wextra  -D_REENTRANT -O2 -I.
+
+gcc -c buffer/errmsg_iam.c -pipe -W -Wall -Wextra  -D_REENTRANT -O2 -I.
+
+gcc -c buffer/errmsg_info.c -pipe -W -Wall -Wextra  -D_REENTRANT -O2 -I.
+
+gcc -c buffer/errmsg_infosys.c -pipe -W -Wall -Wextra  -D_REENTRANT -O2 -I.
+
+gcc -c buffer/errmsg_puts.c -pipe -W -Wall -Wextra  -D_REENTRANT -O2 -I.
+
+gcc -c buffer/errmsg_warn.c -pipe -W -Wall -Wextra  -D_REENTRANT -O2 -I.
+
+gcc -c buffer/errmsg_warnsys.c -pipe -W -Wall -Wextra  -D_REENTRANT -O2 -I.
+
+gcc -c buffer/errmsg_write.c -pipe -W -Wall -Wextra  -D_REENTRANT -O2 -I.
+
+gcc -c buffer/prs_asciiz.c -pipe -W -Wall -Wextra  -D_REENTRANT -O2 -I.
+
+gcc -c buffer/prs_asciiz_fixedlen.c -pipe -W -Wall -Wextra  -D_REENTRANT -O2 -I.
+
+gcc -c buffer/prs_readblob.c -pipe -W -Wall -Wextra  -D_REENTRANT -O2 -I.
+
+gcc -c buffer/prs_u16.c -pipe -W -Wall -Wextra  -D_REENTRANT -O2 -I.
+
+gcc -c buffer/prs_u16_big.c -pipe -W -Wall -Wextra  -D_REENTRANT -O2 -I.
+
+gcc -c buffer/prs_u32.c -pipe -W -Wall -Wextra  -D_REENTRANT -O2 -I.
+
+gcc -c buffer/prs_u32_big.c -pipe -W -Wall -Wextra  -D_REENTRANT -O2 -I.
+
+gcc -c buffer/prs_u64.c -pipe -W -Wall -Wextra  -D_REENTRANT -O2 -I.
+
+gcc -c buffer/prs_u64_big.c -pipe -W -Wall -Wextra  -D_REENTRANT -O2 -I.
+
+ar cru buffer.a bs_capacityassert.o bs_capacitycheck.o bs_capacityleft.o bs_consumeleftovers.o bs_err.o bs_get.o bs_init_bstream_size.o bs_init_iobuf.o bs_init_iobuf_size.o bs_init_membuf.o bs_nomoredataassert.o bs_peek.o bs_seterrorstate.o bs_skip.o buffer_0.o buffer_0small.o buffer_1.o buffer_1small.o buffer_2.o buffer_close.o buffer_feed.o buffer_flush.o buffer_free.o buffer_fromarray.o buffer_frombuf.o buffer_fromsa.o buffer_get.o buffer_get_new_token_sa.o buffer_get_new_token_sa_pred.o buffer_get_token.o buffer_get_token_pred.o buffer_get_token_sa.o buffer_get_token_sa_pred.o buffer_getc.o buffer_getline.o buffer_getline_sa.o buffer_getn.o buffer_getnewline_sa.o buffer_init.o buffer_init_allocbuf.o buffer_init_free.o buffer_init_read.o buffer_init_read_allocbuf.o buffer_init_staticcontents.o buffer_init_staticcontents_free.o buffer_init_write.o buffer_init_write_allocbuf.o buffer_mmapread.o buffer_munmap.o buffer_peek.o buffer_peekc.o buffer_put.o buffer_put8long.o buffer_putalign.o buffer_puterror.o buffer_puterror2.o buffer_putflush.o buffer_putlong.o buffer_putlonglong.o buffer_putm_internal.o buffer_putm_internal_flush.o buffer_putnlflush.o buffer_puts.o buffer_putsa.o buffer_putsaflush.o buffer_putsalign.o buffer_putsflush.o buffer_putspace.o buffer_putulong.o buffer_putulonglong.o buffer_putxlong.o buffer_seek.o buffer_stubborn.o buffer_stubborn2.o buffer_tosa.o errmsg_iam.o errmsg_info.o errmsg_infosys.o errmsg_puts.o errmsg_warn.o errmsg_warnsys.o errmsg_write.o prs_asciiz.o prs_asciiz_fixedlen.o prs_readblob.o prs_u16.o prs_u16_big.o prs_u32.o prs_u32_big.o prs_u64.o prs_u64_big.o
+
+ar: `u' modifier ignored since `D' is the default (see `U')
+
+ranlib buffer.a
+
+gcc -c mmap/mmap_private.c -pipe -W -Wall -Wextra  -D_REENTRANT -O2 -I.
+
+gcc -c mmap/mmap_read.c -pipe -W -Wall -Wextra  -D_REENTRANT -O2 -I.
+
+gcc -c mmap/mmap_readat.c -pipe -W -Wall -Wextra  -D_REENTRANT -O2 -I.
+
+gcc -c mmap/mmap_shared.c -pipe -W -Wall -Wextra  -D_REENTRANT -O2 -I.
+
+gcc -c mmap/mmap_unmap.c -pipe -W -Wall -Wextra  -D_REENTRANT -O2 -I.
+
+ar cru mmap.a mmap_private.o mmap_read.o mmap_readat.o mmap_shared.o mmap_unmap.o
+
+ar: `u' modifier ignored since `D' is the default (see `U')
+
+ranlib mmap.a
+
+gcc -c taia/taia_add.c -pipe -W -Wall -Wextra  -D_REENTRANT -O2 -I.
+
+gcc -c taia/taia_addsec.c -pipe -W -Wall -Wextra  -D_REENTRANT -O2 -I.
+
+gcc -c taia/taia_approx.c -pipe -W -Wall -Wextra  -D_REENTRANT -O2 -I.
+
+gcc -c taia/taia_frac.c -pipe -W -Wall -Wextra  -D_REENTRANT -O2 -I.
+
+gcc -c taia/taia_half.c -pipe -W -Wall -Wextra  -D_REENTRANT -O2 -I.
+
+gcc -c taia/taia_less.c -pipe -W -Wall -Wextra  -D_REENTRANT -O2 -I.
+
+gcc -c taia/taia_now.c -pipe -W -Wall -Wextra  -D_REENTRANT -O2 -I.
+
+gcc -c taia/taia_pack.c -pipe -W -Wall -Wextra  -D_REENTRANT -O2 -I.
+
+gcc -c taia/taia_sub.c -pipe -W -Wall -Wextra  -D_REENTRANT -O2 -I.
+
+gcc -c taia/taia_tai.c -pipe -W -Wall -Wextra  -D_REENTRANT -O2 -I.
+
+gcc -c taia/taia_uint.c -pipe -W -Wall -Wextra  -D_REENTRANT -O2 -I.
+
+gcc -c taia/taia_unpack.c -pipe -W -Wall -Wextra  -D_REENTRANT -O2 -I.
+
+ar cru taia.a taia_add.o taia_addsec.o taia_approx.o taia_frac.o taia_half.o taia_less.o taia_now.o taia_pack.o taia_sub.o taia_tai.o taia_uint.o taia_unpack.o
+
+ar: 
+
+`u' modifier ignored since `D' is the default (see `U')
+
+
+
+ranlib taia.a
+
+gcc -c tai/tai_add.c -pipe -W -Wall -Wextra  -D_REENTRANT -O2 -I.
+
+gcc -c tai/tai_now.c -pipe -W -Wall -Wextra  -D_REENTRANT -O2 -I.
+
+gcc -c tai/tai_pack.c -pipe -W -Wall -Wextra  -D_REENTRANT -O2 -I.
+
+gcc -c tai/tai_sub.c -pipe -W -Wall -Wextra  -D_REENTRANT -O2 -I.
+
+gcc -c tai/tai_uint.c -pipe -W -Wall -Wextra  -D_REENTRANT -O2 -I.
+
+gcc -c tai/tai_unpack.c -pipe -W -Wall -Wextra  -D_REENTRANT -O2 -I.
+
+ar cru tai.a tai_add.o tai_now.o tai_pack.o tai_sub.o tai_uint.o tai_unpack.o
+
+ar: `u' modifier ignored since `D' is the default (see `U')
+
+ranlib tai.a
+
+gcc -c dns/dns_dfd.c -pipe -W -Wall -Wextra  -D_REENTRANT -O2 -I.
+
+In file included from ./libowfat/iopause.h:9,
+                 from ./dns.h:6,
+                 from dns/dns_dfd.c:4:
+/usr/include/sys/poll.h:1:2: warning: #warning redirecting incorrect #include <sys/poll.h> to <poll.h> [-Wcpp]
+    1 | #warning redirecting incorrect #include <sys/poll.h> to <poll.h>
+      |  ^~~~~~~
+
+gcc -c dns/dns_domain.c -pipe -W -Wall -Wextra  -D_REENTRANT -O2 -I.
+
+In file included from ./libowfat/iopause.h:9,
+                 from ./dns.h:6,
+                 from dns/dns_domain.c:4:
+/usr/include/sys/poll.h:1:2: warning: #warning redirecting incorrect #include <sys/poll.h> to <poll.h> [-Wcpp]
+    1 | #warning redirecting incorrect #include <sys/poll.h> to <poll.h>
+      |  ^~~~~~~
+
+gcc -c dns/dns_dtda.c -pipe -W -Wall -Wextra  -D_REENTRANT -O2 -I.
+
+In file included from ./libowfat/iopause.h:9,
+                 from ./dns.h:6,
+                 from dns/dns_dtda.c:2:
+/usr/include/sys/poll.h:1:2: warning: #warning redirecting incorrect #include <sys/poll.h> to <poll.h> [-Wcpp]
+    1 | #warning redirecting incorrect #include <sys/poll.h> to <poll.h>
+      |  ^~~~~~~
+
+gcc -c dns/dns_ip.c -pipe -W -Wall -Wextra  -D_REENTRANT -O2 -I.
+
+In file included from ./libowfat/iopause.h:9,
+                 from ./dns.h:6,
+                 from dns/dns_ip.c:4:
+/usr/include/sys/poll.h:1:2: warning: #warning redirecting incorrect #include <sys/poll.h> to <poll.h> [-Wcpp]
+    1 | #warning redirecting incorrect #include <sys/poll.h> to <poll.h>
+      |  ^~~~~~~
+
+gcc -c dns/dns_ip6.c -pipe -W -Wall -Wextra  -D_REENTRANT -O2 -I.
+
+In file included from ./libowfat/iopause.h:9,
+                 from ./dns.h:6,
+                 from dns/dns_ip6.c:4:
+/usr/include/sys/poll.h:1:2: warning: #warning redirecting incorrect #include <sys/poll.h> to <poll.h> [-Wcpp]
+    1 | #warning redirecting incorrect #include <sys/poll.h> to <poll.h>
+      |  ^~~~~~~
+
+gcc -c dns/dns_ipq.c -pipe -W -Wall -Wextra  -D_REENTRANT -O2 -I.
+
+In file included from ./libowfat/iopause.h:9,
+                 from ./dns.h:6,
+                 from dns/dns_ipq.c:5:
+/usr/include/sys/poll.h:1:2: warning: #warning redirecting incorrect #include <sys/poll.h> to <poll.h> [-Wcpp]
+    1 | #warning redirecting incorrect #include <sys/poll.h> to <poll.h>
+      |  ^~~~~~~
+
+gcc -c dns/dns_ipq6.c -pipe -W -Wall -Wextra  -D_REENTRANT -O2 -I.
+
+In file included from ./libowfat/iopause.h:9,
+                 from ./dns.h:6,
+                 from dns/dns_ipq6.c:5:
+/usr/include/sys/poll.h:1:2: warning: #warning redirecting incorrect #include <sys/poll.h> to <poll.h> [-Wcpp]
+    1 | #warning redirecting incorrect #include <sys/poll.h> to <poll.h>
+      |  ^~~~~~~
+
+gcc -c dns/dns_mx.c -pipe -W -Wall -Wextra  -D_REENTRANT -O2 -I.
+
+In file included from ./libowfat/iopause.h:9,
+                 from ./dns.h:6,
+                 from dns/dns_mx.c:4:
+/usr/include/sys/poll.h:1:2: warning: #warning redirecting incorrect #include <sys/poll.h> to <poll.h> [-Wcpp]
+    1 | #warning redirecting incorrect #include <sys/poll.h> to <poll.h>
+      |  ^~~~~~~
+
+gcc -c dns/dns_name.c -pipe -W -Wall -Wextra  -D_REENTRANT -O2 -I.
+
+In file included from ./libowfat/iopause.h:9,
+                 from ./dns.h:6,
+                 from dns/dns_name.c:4:
+/usr/include/sys/poll.h:1:2: warning: #warning redirecting incorrect #include <sys/poll.h> to <poll.h> [-Wcpp]
+    1 | #warning redirecting incorrect #include <sys/poll.h> to <poll.h>
+      |  ^~~~~~~
+
+gcc -c dns/dns_nd.c -pipe -W -Wall -Wextra  -D_REENTRANT -O2 -I.
+
+In file included from ./libowfat/iopause.h:9,
+                 from ./dns.h:6,
+                 from dns/dns_nd.c:3:
+/usr/include/sys/poll.h:1:2: warning: #warning redirecting incorrect #include <sys/poll.h> to <poll.h> [-Wcpp]
+    1 | #warning redirecting incorrect #include <sys/poll.h> to <poll.h>
+      |  ^~~~~~~
+
+gcc -c dns/dns_nd6.c -pipe -W -Wall -Wextra  -D_REENTRANT -O2 -I.
+
+In file included from ./libowfat/iopause.h:9,
+                 from ./dns.h:6,
+                 from dns/dns_nd6.c:3:
+/usr/include/sys/poll.h:1:2: warning: #warning redirecting incorrect #include <sys/poll.h> to <poll.h> [-Wcpp]
+    1 | #warning redirecting incorrect #include <sys/poll.h> to <poll.h>
+      |  ^~~~~~~
+
+gcc -c dns/dns_packet.c -pipe -W -Wall -Wextra  -D_REENTRANT -O2 -I.
+
+In file included from ./libowfat/iopause.h:9,
+                 from ./dns.h:6,
+                 from dns/dns_packet.c:6:
+/usr/include/sys/poll.h:1:2: warning: #warning redirecting incorrect #include <sys/poll.h> to <poll.h> [-Wcpp]
+    1 | #warning redirecting incorrect #include <sys/poll.h> to <poll.h>
+      |  ^~~~~~~
+
+gcc -c dns/dns_random.c -pipe -W -Wall -Wextra  -D_REENTRANT -O2 -I.
+
+In file included from ./libowfat/iopause.h:9,
+                 from ./dns.h:6,
+                 from dns/dns_random.c:2:
+/usr/include/sys/poll.h:1:2: warning: #warning redirecting incorrect #include <sys/poll.h> to <poll.h> [-Wcpp]
+    1 | #warning redirecting incorrect #include <sys/poll.h> to <poll.h>
+      |  ^~~~~~~
+
+gcc -c dns/dns_rcip.c -pipe -W -Wall -Wextra  -D_REENTRANT -O2 -I.
+
+In file included from ./libowfat/iopause.h:9,
+                 from ./dns.h:6,
+                 from dns/dns_rcip.c:7:
+/usr/include/sys/poll.h:1:2: warning: #warning redirecting incorrect #include <sys/poll.h> to <poll.h> [-Wcpp]
+    1 | #warning redirecting incorrect #include <sys/poll.h> to <poll.h>
+      |  ^~~~~~~
+
+gcc -c dns/dns_rcrw.c -pipe -W -Wall -Wextra  -D_REENTRANT -O2 -I.
+
+In file included from ./libowfat/iopause.h:9,
+                 from ./dns.h:6,
+                 from dns/dns_rcrw.c:7:
+/usr/include/sys/poll.h:1:2: warning: #warning redirecting incorrect #include <sys/poll.h> to <poll.h> [-Wcpp]
+    1 | #warning redirecting incorrect #include <sys/poll.h> to <poll.h>
+      |  ^~~~~~~
+
+gcc -c dns/dns_resolve.c -pipe -W -Wall -Wextra  -D_REENTRANT -O2 -I.
+
+In file included from ./iopause.h:9,
+                 from dns/dns_resolve.c:1:
+/usr/include/sys/poll.h:1:2: warning: #warning redirecting incorrect #include <sys/poll.h> to <poll.h> [-Wcpp]
+    1 | #warning redirecting incorrect #include <sys/poll.h> to <poll.h>
+      |  ^~~~~~~
+
+gcc -c dns/dns_sortip.c -pipe -W -Wall -Wextra  -D_REENTRANT -O2 -I.
+
+In file included from ./libowfat/iopause.h:9,
+                 from ./dns.h:6,
+                 from dns/dns_sortip.c:2:
+/usr/include/sys/poll.h:1:2: warning: #warning redirecting incorrect #include <sys/poll.h> to <poll.h> [-Wcpp]
+    1 | #warning redirecting incorrect #include <sys/poll.h> to <poll.h>
+      |  ^~~~~~~
+
+gcc -c dns/dns_sortip6.c -pipe -W -Wall -Wextra  -D_REENTRANT -O2 -I.
+
+In file included from ./libowfat/iopause.h:9,
+                 from ./dns.h:6,
+                 from dns/dns_sortip6.c:2:
+/usr/include/sys/poll.h:1:2: warning: #warning redirecting incorrect #include <sys/poll.h> to <poll.h> [-Wcpp]
+    1 | #warning redirecting incorrect #include <sys/poll.h> to <poll.h>
+      |  ^~~~~~~
+
+gcc -c dns/dns_transmit.c -pipe -W -Wall -Wextra  -D_REENTRANT -O2 -I.
+
+In file included from ./libowfat/iopause.h:9,
+                 from ./dns.h:6,
+                 from dns/dns_transmit.c:14:
+/usr/include/sys/poll.h:1:2: warning: #warning redirecting incorrect #include <sys/poll.h> to <poll.h> [-Wcpp]
+    1 | #warning redirecting incorrect #include <sys/poll.h> to <poll.h>
+      |  ^~~~~~~
+
+gcc -c dns/dns_txt.c -pipe -W -Wall -Wextra  -D_REENTRANT -O2 -I.
+
+In file included from ./libowfat/iopause.h:9,
+                 from ./dns.h:6,
+                 from dns/dns_txt.c:5:
+/usr/include/sys/poll.h:1:2: warning: #warning redirecting incorrect #include <sys/poll.h> to <poll.h> [-Wcpp]
+    1 | #warning redirecting incorrect #include <sys/poll.h> to <poll.h>
+      |  ^~~~~~~
+
+ar cru dns.a dns_dfd.o dns_domain.o dns_dtda.o dns_ip.o dns_ip6.o dns_ipq.o dns_ipq6.o dns_mx.o dns_name.o dns_nd.o dns_nd6.o dns_packet.o dns_random.o dns_rcip.o dns_rcrw.o dns_resolve.o dns_sortip.o dns_sortip6.o dns_transmit.o dns_txt.o
+
+ar: `u' modifier ignored since `D' is the default (see `U')
+
+ranlib dns.a
+
+gcc -c case/case_diffb.c -pipe -W -Wall -Wextra  -D_REENTRANT -O2 -I.
+
+gcc -c case/case_diffs.c -pipe -W -Wall -Wextra  -D_REENTRANT -O2 -I.
+
+gcc -c case/case_lowerb.c -pipe -W -Wall -Wextra  -D_REENTRANT -O2 -I.
+
+gcc -c case/case_lowers.c -pipe -W -Wall -Wextra  -D_REENTRANT -O2 -I.
+
+gcc -c case/case_starts.c -pipe -W -Wall -Wextra  -D_REENTRANT -O2 -I.
+
+ar cru case.a case_diffb.o case_diffs.o case_lowerb.o case_lowers.o case_starts.o
+
+ar: `u' modifier ignored since `D' is the default (see `U')
+
+ranlib case.a
+
+gcc -c mult/imult16.c -pipe -W -Wall -Wextra  -D_REENTRANT -O2 -I.
+
+gcc -c mult/imult32.c -pipe -W -Wall -Wextra  -D_REENTRANT -O2 -I.
+
+gcc -c mult/imult64.c -pipe -W -Wall -Wextra  -D_REENTRANT -O2 -I.
+
+gcc -c mult/range_arrayinbuf.c -pipe -W -Wall -Wextra  -D_REENTRANT -O2 -I.
+
+gcc -c mult/range_str2inbuf.c -pipe -W -Wall -Wextra  -D_REENTRANT -O2 -I.
+
+gcc -c mult/range_str4inbuf.c -pipe -W -Wall -Wextra  -D_REENTRANT -O2 -I.
+
+gcc -c mult/range_strinbuf.c -pipe -W -Wall -Wextra  -D_REENTRANT -O2 -I.
+
+gcc -c mult/umult16.c -pipe -W -Wall -Wextra  -D_REENTRANT -O2 -I.
+
+gcc -c mult/umult32.c -pipe -W -Wall -Wextra  -D_REENTRANT -O2 -I.
+
+gcc -c mult/umult64.c -pipe -W -Wall -Wextra  -D_REENTRANT -O2 -I.
+
+ar cru mult.a imult16.o imult32.o imult64.o range_arrayinbuf.o range_str2inbuf.o range_str4inbuf.o range_strinbuf.o umult16.o umult32.o umult64.o
+
+ar: `u' modifier ignored since `D' is the default (see `U')
+
+ranlib mult.a
+
+gcc -c array/array_allocate.c -pipe -W -Wall -Wextra  -D_REENTRANT -O2 -I.
+
+gcc -c array/array_bytes.c -pipe -W -Wall -Wextra  -D_REENTRANT -O2 -I.
+
+gcc -c array/array_cat.c -pipe -W -Wall -Wextra  -D_REENTRANT -O2 -I.
+
+gcc -c array/array_cat0.c -pipe -W -Wall -Wextra  -D_REENTRANT -O2 -I.
+
+gcc -c array/array_catb.c -pipe -W -Wall -Wextra  -D_REENTRANT -O2 -I.
+
+gcc -c array/array_cate.c -pipe -W -Wall -Wextra  -D_REENTRANT -O2 -I.
+
+gcc -c array/array_cats.c -pipe -W -Wall -Wextra  -D_REENTRANT -O2 -I.
+
+gcc -c array/array_cats0.c -pipe -W -Wall -Wextra  -D_REENTRANT -O2 -I.
+
+gcc -c array/array_equal.c -pipe -W -Wall -Wextra  -D_REENTRANT -O2 -I.
+
+gcc -c array/array_fail.c -pipe -W -Wall -Wextra  -D_REENTRANT -O2 -I.
+
+gcc -c array/array_get.c -pipe -W -Wall -Wextra  -D_REENTRANT -O2 -I.
+
+gcc -c array/array_length.c -pipe -W -Wall -Wextra  -D_REENTRANT -O2 -I.
+
+gcc -c array/array_reset.c -pipe -W -Wall -Wextra  -D_REENTRANT -O2 -I.
+
+gcc -c array/array_start.c -pipe -W -Wall -Wextra  -D_REENTRANT -O2 -I.
+
+gcc -c array/array_trunc.c -pipe -W -Wall -Wextra  -D_REENTRANT -O2 -I.
+
+gcc -c array/array_truncate.c -pipe -W -Wall -Wextra  -D_REENTRANT -O2 -I.
+
+gcc -c array/iarray_allocate.c -pipe -W -Wall -Wextra  -D_REENTRANT -O2 -I.
+
+gcc -c array/iarray_free.c -pipe -W -Wall -Wextra  -D_REENTRANT -O2 -I.
+
+gcc -c array/iarray_get.c -pipe -W -Wall -Wextra  -D_REENTRANT -O2 -I.
+
+gcc -c array/iarray_init.c -pipe -W -Wall -Wextra  -D_REENTRANT -O2 -I.
+
+gcc -c array/iarray_length.c -pipe -W -Wall -Wextra  -D_REENTRANT -O2 -I.
+
+ar cru array.a array_allocate.o array_bytes.o array_cat.o array_cat0.o array_catb.o array_cate.o array_cats.o array_cats0.o array_equal.o array_fail.o array_get.o array_length.o array_reset.o array_start.o array_trunc.o array_truncate.o iarray_allocate.o iarray_free.o iarray_get.o iarray_init.o iarray_length.o
+
+ar: `u' modifier ignored since `D' is the default (see `U')
+
+ranlib array.a
+
+rm -f haveepoll.h
+
+if  gcc -pipe -W -Wall -Wextra  -D_REENTRANT -O2 -I. -o tryepoll tryepoll.c >/dev/null 2>&1; then echo "#define HAVE_EPOLL 1"; else \
+if  gcc -pipe -W -Wall -Wextra  -D_REENTRANT -O2 -I. -o tryepoll tryepoll.c -lepoll >/dev/null 2>&1; then echo "#define HAVE_EPOLL 2"; fi; fi > haveepoll.h
+
+rm -f tryepoll
+
+rm -f havekqueue.h
+
+if  gcc -pipe -W -Wall -Wextra  -D_REENTRANT -O2 -I. -c trykqueue.c >/dev/null 2>&1; then echo "#define HAVE_KQUEUE"; fi > havekqueue.h
+
+rm -f trykqueue.o
+
+rm -f havesigio.h
+
+if  gcc -pipe -W -Wall -Wextra  -D_REENTRANT -O2 -I. -c trysigio.c >/dev/null 2>&1; then echo "#define HAVE_SIGIO"; fi > havesigio.h
+
+rm -f trysigio.o
+
+rm -f havebsdsf.h
+
+if  gcc -pipe -W -Wall -Wextra  -D_REENTRANT -O2 -I. -o trybsdsf trybsdsf.c >/dev/null 2>&1; then echo "#define HAVE_BSDSENDFILE"; fi > havebsdsf.h
+
+rm -f trybsdsf.o trybsdsf
+
+rm -f havedevpoll.h
+
+if  gcc -pipe -W -Wall -Wextra  -D_REENTRANT -O2 -I. -c trydevpoll.c >/dev/null 2>&1; then echo "#define HAVE_DEVPOLL"; fi > havedevpoll.h
+
+rm -f trydevpoll.o
+
+rm -f havesendfile.h
+
+if  gcc -pipe -W -Wall -Wextra  -D_REENTRANT -O2 -I. -c trysendfile.c >/dev/null 2>&1; then echo "#define HAVE_SENDFILE"; fi > havesendfile.h
+
+rm -f trysendfile.o
+
+gcc -c io/io_appendfile.c -pipe -W -Wall -Wextra  -D_REENTRANT -O2 -I.
+
+gcc -c io/io_block.c -pipe -W -Wall -Wextra  -D_REENTRANT -O2 -I.
+
+gcc -c io/io_canread.c -pipe -W -Wall -Wextra  -D_REENTRANT -O2 -I.
+
+gcc -c io/io_canwrite.c -pipe -W -Wall -Wextra  -D_REENTRANT -O2 -I.
+
+gcc -c io/io_check.c -pipe -W -Wall -Wextra  -D_REENTRANT -O2 -I.
+
+gcc -c io/io_close.c -pipe -W -Wall -Wextra  -D_REENTRANT -O2 -I.
+
+gcc -c io/io_closeonexec.c -pipe -W -Wall -Wextra  -D_REENTRANT -O2 -I.
+
+gcc -c io/io_createfile.c -pipe -W -Wall -Wextra  -D_REENTRANT -O2 -I.
+
+gcc -c io/io_debugstring.c -pipe -W -Wall -Wextra  -D_REENTRANT -O2 -I.
+
+gcc -c io/io_dontwantread.c -pipe -W -Wall -Wextra  -D_REENTRANT -O2 -I.
+
+gcc -c io/io_dontwantwrite.c -pipe -W -Wall -Wextra  -D_REENTRANT -O2 -I.
+
+gcc -c io/io_eagain.c -pipe -W -Wall -Wextra  -D_REENTRANT -O2 -I.
+
+gcc -c io/io_eagain_read.c -pipe -W -Wall -Wextra  -D_REENTRANT -O2 -I.
+
+gcc -c io/io_eagain_write.c -pipe -W -Wall -Wextra  -D_REENTRANT -O2 -I.
+
+gcc -c io/io_fd.c -pipe -W -Wall -Wextra  -D_REENTRANT -O2 -I.
+
+gcc -c io/io_finishandshutdown.c -pipe -W -Wall -Wextra  -D_REENTRANT -O2 -I.
+
+gcc -c io/io_getcookie.c -pipe -W -Wall -Wextra  -D_REENTRANT -O2 -I.
+
+rm -f havepread.h
+
+if  gcc -pipe -W -Wall -Wextra  -D_REENTRANT -O2 -I. -c trypread.c >/dev/null 2>&1; then echo "#define HAVE_PREAD"; fi > havepread.h
+
+rm -f trypread.o
+
+gcc -c io/io_mmapwritefile.c -pipe -W -Wall -Wextra  -D_REENTRANT -O2 -I.
+
+gcc -c io/io_nonblock.c -pipe -W -Wall -Wextra  -D_REENTRANT -O2 -I.
+
+gcc -c io/io_passfd.c -pipe -W -Wall -Wextra  -D_REENTRANT -O2 -I.
+
+gcc -c io/io_pipe.c -pipe -W -Wall -Wextra  -D_REENTRANT -O2 -I.
+
+gcc -c io/io_readfile.c -pipe -W -Wall -Wextra  -D_REENTRANT -O2 -I.
+
+gcc -c io/io_readwritefile.c -pipe -W -Wall -Wextra  -D_REENTRANT -O2 -I.
+
+gcc -c io/io_receivefd.c -pipe -W -Wall -Wextra  -D_REENTRANT -O2 -I.
+
+gcc -c io/io_sendfile.c -pipe -W -Wall -Wextra  -D_REENTRANT -O2 -I.
+
+gcc -c io/io_setcookie.c -pipe -W -Wall -Wextra  -D_REENTRANT -O2 -I.
+
+gcc -c io/io_sigpipe.c -pipe -W -Wall -Wextra  -D_REENTRANT -O2 -I.
+
+gcc -c io/io_socketpair.c -pipe -W -Wall -Wextra  -D_REENTRANT -O2 -I.
+
+gcc -c io/io_timedout.c -pipe -W -Wall -Wextra  -D_REENTRANT -O2 -I.
+
+gcc -c io/io_timeout.c -pipe -W -Wall -Wextra  -D_REENTRANT -O2 -I.
+
+gcc -c io/io_timeouted.c -pipe -W -Wall -Wextra  -D_REENTRANT -O2 -I.
+
+gcc -c io/io_tryread.c -pipe -W -Wall -Wextra  -D_REENTRANT -O2 -I.
+
+gcc -c io/io_tryreadtimeout.c -pipe -W -Wall -Wextra  -D_REENTRANT -O2 -I.
+
+gcc -c io/io_trywrite.c -pipe -W -Wall -Wextra  -D_REENTRANT -O2 -I.
+
+gcc -c io/io_trywritetimeout.c -pipe -W -Wall -Wextra  -D_REENTRANT -O2 -I.
+
+gcc -c io/io_wait.c -pipe -W -Wall -Wextra  -D_REENTRANT -O2 -I.
+
+gcc -c io/io_waitread.c -pipe -W -Wall -Wextra  -D_REENTRANT -O2 -I.
+
+gcc -c io/io_waituntil.c -pipe -W -Wall -Wextra  -D_REENTRANT -O2 -I.
+
+gcc -c io/io_waituntil2.c -pipe -W -Wall -Wextra  -D_REENTRANT -O2 -I.
+
+io/io_waituntil2.c:3: warning: "_XOPEN_SOURCE" redefined
+    3 | #define _XOPEN_SOURCE
+      | 
+
+In file included from /usr/include/inttypes.h:8,
+                 from ./libowfat/uint64.h:5,
+                 from ./libowfat/io.h:11,
+                 from ./io_internal.h:5,
+                 from io/io_waituntil2.c:1:
+/usr/include/features.h:16: note: this is the location of the previous definition
+   16 | #define _XOPEN_SOURCE 700
+      | 
+
+gcc -c io/io_waitwrite.c -pipe -W -Wall -Wextra  -D_REENTRANT -O2 -I.
+
+gcc -c io/io_wantread.c -pipe -W -Wall -Wextra  -D_REENTRANT -O2 -I.
+
+In file included from io/io_wantread.c:16:
+/usr/include/sys/poll.h:1:2: warning: #warning redirecting incorrect #include <sys/poll.h> to <poll.h> [-Wcpp]
+    1 | #warning redirecting incorrect #include <sys/poll.h> to <poll.h>
+      |  ^~~~~~~
+
+gcc -c io/io_wantwrite.c -pipe -W -Wall -Wextra  -D_REENTRANT -O2 -I.
+
+In file included from io/io_wantwrite.c:16:
+/usr/include/sys/poll.h:1:2: warning: #warning redirecting incorrect #include <sys/poll.h> to <poll.h> [-Wcpp]
+    1 | #warning redirecting incorrect #include <sys/poll.h> to <poll.h>
+      |  ^~~~~~~
+
+gcc -c io/iob_addbuf.c -pipe -W -Wall -Wextra  -D_REENTRANT -O2 -I.
+
+gcc -c io/iob_addbuf_free.c -pipe -W -Wall -Wextra  -D_REENTRANT -O2 -I.
+
+gcc -c io/iob_addbuf_internal.c -pipe -W -Wall -Wextra  -D_REENTRANT -O2 -I.
+
+gcc -c io/iob_addbuf_munmap.c -pipe -W -Wall -Wextra  -D_REENTRANT -O2 -I.
+
+gcc -c io/iob_addfile.c -pipe -W -Wall -Wextra  -D_REENTRANT -O2 -I.
+
+gcc -c io/iob_addfile_close.c -pipe -W -Wall -Wextra  -D_REENTRANT -O2 -I.
+
+gcc -c io/iob_adds.c -pipe -W -Wall -Wextra  -D_REENTRANT -O2 -I.
+
+gcc -c io/iob_adds_free.c -pipe -W -Wall -Wextra  -D_REENTRANT -O2 -I.
+
+gcc -c io/iob_bytesleft.c -pipe -W -Wall -Wextra  -D_REENTRANT -O2 -I.
+
+gcc -c io/iob_free.c -pipe -W -Wall -Wextra  -D_REENTRANT -O2 -I.
+
+gcc -c io/iob_new.c -pipe -W -Wall -Wextra  -D_REENTRANT -O2 -I.
+
+gcc -c io/iob_prefetch.c -pipe -W -Wall -Wextra  -D_REENTRANT -O2 -I.
+
+gcc -c io/iob_reset.c -pipe -W -Wall -Wextra  -D_REENTRANT -O2 -I.
+
+gcc -c io/iob_send.c -pipe -W -Wall -Wextra  -D_REENTRANT -O2 -I.
+
+gcc -c io/iob_write.c -pipe -W -Wall -Wextra  -D_REENTRANT -O2 -I.
+
+gcc -c io/iom_abort.c -pipe -W -Wall -Wextra  -D_REENTRANT -O2 -I.
+
+gcc -c io/iom_add.c -pipe -W -Wall -Wextra  -D_REENTRANT -O2 -I.
+
+gcc -c io/iom_init.c -pipe -W -Wall -Wextra  -D_REENTRANT -O2 -I.
+
+gcc -c io/iom_wait.c -pipe -W -Wall -Wextra  -D_REENTRANT -O2 -I.
+
+ar cru io.a io_appendfile.o io_block.o io_canread.o io_canwrite.o io_check.o io_close.o io_closeonexec.o io_createfile.o io_debugstring.o io_dontwantread.o io_dontwantwrite.o io_eagain.o io_eagain_read.o io_eagain_write.o io_fd.o io_finishandshutdown.o io_getcookie.o io_mmapwritefile.o io_nonblock.o io_passfd.o io_pipe.o io_readfile.o io_readwritefile.o io_receivefd.o io_sendfile.o io_setcookie.o io_sigpipe.o io_socketpair.o io_timedout.o io_timeout.o io_timeouted.o io_tryread.o io_tryreadtimeout.o io_trywrite.o io_trywritetimeout.o io_wait.o io_waitread.o io_waituntil.o io_waituntil2.o io_waitwrite.o io_wantread.o io_wantwrite.o iob_addbuf.o iob_addbuf_free.o iob_addbuf_internal.o iob_addbuf_munmap.o iob_addfile.o iob_addfile_close.o iob_adds.o iob_adds_free.o iob_bytesleft.o iob_free.o iob_new.o iob_prefetch.o iob_reset.o iob_send.o iob_write.o iom_abort.o iom_add.o iom_init.o iom_wait.o
+
+ar: `u' modifier ignored since `D' is the default (see `U')
+
+ranlib io.a
+
+gcc -c textcode/base64.c -pipe -W -Wall -Wextra  -D_REENTRANT -O2 -I.
+
+gcc -c textcode/base64url.c -pipe -W -Wall -Wextra  -D_REENTRANT -O2 -I.
+
+gcc -c textcode/fmt_base64.c -pipe -W -Wall -Wextra  -D_REENTRANT -O2 -I.
+
+gcc -c textcode/fmt_base64url.c -pipe -W -Wall -Wextra  -D_REENTRANT -O2 -I.
+
+gcc -c textcode/fmt_cescape.c -pipe -W -Wall -Wextra  -D_REENTRANT -O2 -I.
+
+gcc -c textcode/fmt_foldwhitespace.c -pipe -W -Wall -Wextra  -D_REENTRANT -O2 -I.
+
+gcc -c textcode/fmt_hexdump.c -pipe -W -Wall -Wextra  -D_REENTRANT -O2 -I.
+
+gcc -c textcode/fmt_html.c -pipe -W -Wall -Wextra  -D_REENTRANT -O2 -I.
+
+gcc -c textcode/fmt_html_tagarg.c -pipe -W -Wall -Wextra  -D_REENTRANT -O2 -I.
+
+gcc -c textcode/fmt_jsonescape.c -pipe -W -Wall -Wextra  -D_REENTRANT -O2 -I.
+
+gcc -c textcode/fmt_ldapescape.c -pipe -W -Wall -Wextra  -D_REENTRANT -O2 -I.
+
+gcc -c textcode/fmt_ldapescape2.c -pipe -W -Wall -Wextra  -D_REENTRANT -O2 -I.
+
+gcc -c textcode/fmt_quotedprintable.c -pipe -W -Wall -Wextra  -D_REENTRANT -O2 -I.
+
+gcc -c textcode/fmt_to_array.c -pipe -W -Wall -Wextra  -D_REENTRANT -O2 -I.
+
+gcc -c textcode/fmt_to_sa.c -pipe -W -Wall -Wextra  -D_REENTRANT -O2 -I.
+
+gcc -c textcode/fmt_tofrom_array.c -pipe -W -Wall -Wextra  -D_REENTRANT -O2 -I.
+
+gcc -c textcode/fmt_urlencoded.c -pipe -W -Wall -Wextra  -D_REENTRANT -O2 -I.
+
+gcc -c textcode/fmt_uuencoded.c -pipe -W -Wall -Wextra  -D_REENTRANT -O2 -I.
+
+gcc -c textcode/fmt_xml.c -pipe -W -Wall -Wextra  -D_REENTRANT -O2 -I.
+
+gcc -c textcode/fmt_yenc.c -pipe -W -Wall -Wextra  -D_REENTRANT -O2 -I.
+
+gcc -c textcode/scan_base64.c -pipe -W -Wall -Wextra  -D_REENTRANT -O2 -I.
+
+gcc -c textcode/scan_base64url.c -pipe -W -Wall -Wextra  -D_REENTRANT -O2 -I.
+
+gcc -c textcode/scan_cescape.c -pipe -W -Wall -Wextra  -D_REENTRANT -O2 -I.
+
+gcc -c textcode/scan_hexdump.c -pipe -W -Wall -Wextra  -D_REENTRANT -O2 -I.
+
+./ent
+
+nodes=9853, datasize=8115
+
+actually used: 9853 nodes, 8115 bytes data
+
+gcc -c textcode/scan_html.c -pipe -W -Wall -Wextra  -D_REENTRANT -O2 -I.
+
+gcc -c textcode/scan_jsonescape.c -pipe -W -Wall -Wextra  -D_REENTRANT -O2 -I.
+
+textcode/scan_jsonescape.c: In function 'scan_jsonescape':
+
+textcode/scan_jsonescape.c:33:11: warning: comparison is always false due to limited range of data type [-Wtype-limits]
+   33 |      if (x<0) goto abort; // not hex -> invalid input
+      |           ^
+
+gcc -c textcode/scan_ldapescape.c -pipe -W -Wall -Wextra  -D_REENTRANT -O2 -I.
+
+gcc -c textcode/scan_quotedprintable.c -pipe -W -Wall -Wextra  -D_REENTRANT -O2 -I.
+
+gcc -c textcode/scan_to_array.c -pipe -W -Wall -Wextra  -D_REENTRANT -O2 -I.
+
+gcc -c textcode/scan_to_sa.c -pipe -W -Wall -Wextra  -D_REENTRANT -O2 -I.
+
+gcc -c textcode/scan_tofrom_array.c -pipe -W -Wall -Wextra  -D_REENTRANT -O2 -I.
+
+gcc -c textcode/scan_urlencoded.c -pipe -W -Wall -Wextra  -D_REENTRANT -O2 -I.
+
+gcc -c textcode/scan_uuencoded.c -pipe -W -Wall -Wextra  -D_REENTRANT -O2 -I.
+
+gcc -c textcode/scan_yenc.c -pipe -W -Wall -Wextra  -D_REENTRANT -O2 -I.
+
+ar cru textcode.a base64.o base64url.o fmt_base64.o fmt_base64url.o fmt_cescape.o fmt_foldwhitespace.o fmt_hexdump.o fmt_html.o fmt_html_tagarg.o fmt_jsonescape.o fmt_ldapescape.o fmt_ldapescape2.o fmt_quotedprintable.o fmt_to_array.o fmt_to_sa.o fmt_tofrom_array.o fmt_urlencoded.o fmt_uuencoded.o fmt_xml.o fmt_yenc.o scan_base64.o scan_base64url.o scan_cescape.o scan_hexdump.o scan_html.o scan_jsonescape.o scan_ldapescape.o scan_quotedprintable.o scan_to_array.o scan_to_sa.o scan_tofrom_array.o scan_urlencoded.o scan_uuencoded.o scan_yenc.o
+
+ar: 
+
+`u' modifier ignored since `D' is the default (see `U')
+
+
+
+ranlib textcode.a
+
+gcc -c cdb/cdb.c -pipe -W -Wall -Wextra  -D_REENTRANT -O2 -I.
+
+gcc -c cdb/cdb_hash.c -pipe -W -Wall -Wextra  -D_REENTRANT -O2 -I.
+
+gcc -c cdb/cdb_make.c -pipe -W -Wall -Wextra  -D_REENTRANT -O2 -I.
+
+gcc -c cdb/cdb_traverse.c -pipe -W -Wall -Wextra  -D_REENTRANT -O2 -I.
+
+ar cru cdb.a cdb.o cdb_hash.o cdb_make.o cdb_traverse.o
+
+ar: 
+
+`u' modifier ignored since `D' is the default (see `U')
+
+
+
+ranlib cdb.a
+
+gcc -c critbit/critbit.c -pipe -W -Wall -Wextra  -D_REENTRANT -O2 -I.
+
+ar cru critbit.a critbit.o
+
+ar: `u' modifier ignored since `D' is the default (see `U')
+
+ranlib critbit.a
+
+ar cru libowfat.a dns_dfd.o dns_domain.o dns_dtda.o dns_ip.o dns_ip6.o dns_ipq.o dns_ipq6.o dns_mx.o dns_name.o dns_nd.o dns_nd6.o dns_packet.o dns_random.o dns_rcip.o dns_rcrw.o dns_resolve.o dns_sortip.o dns_sortip6.o dns_transmit.o dns_txt.o byte_chr.o byte_copy.o byte_copyr.o byte_diff.o byte_equal_notimingattack.o byte_rchr.o byte_start.o byte_starts.o byte_zero.o fmt_8long.o fmt_8longlong.o fmt_asn1derlength.o fmt_asn1dertag.o fmt_double.o fmt_escapecharc.o fmt_escapecharhtml.o fmt_escapecharjson.o fmt_escapecharquotedprintable.o fmt_escapecharquotedprintableutf8.o fmt_escapecharxml.o fmt_fill.o fmt_httpdate.o fmt_human.o fmt_humank.o fmt_iso8601.o fmt_long.o fmt_longlong.o fmt_minus.o fmt_netstring.o fmt_pad.o fmt_pb_double.o fmt_pb_float.o fmt_pb_int.o fmt_pb_sint.o fmt_pb_string.o fmt_pb_tag.o fmt_pb_type0_sint.o fmt_pb_type1_double.o fmt_pb_type1_fixed64.o fmt_pb_type2_string.o fmt_pb_type5_fixed32.o fmt_pb_type5_float.o fmt_plusminus.o fmt_str.o fmt_strm_internal.o fmt_strn.o fmt_tohex.o fmt_ulong.o fmt_ulong0.o fmt_ulonglong.o fmt_utf8.o fmt_varint.o fmt_xlong.o fmt_xlonglong.o fmt_xmlescape.o scan_8int.o scan_8long.o scan_8longlong.o scan_8longn.o scan_8short.o scan_asn1derlength.o scan_asn1dertag.o scan_charsetnskip.o scan_double.o scan_fromhex.o scan_httpdate.o scan_int.o scan_iso8601.o scan_long.o scan_longlong.o scan_longn.o scan_netstring.o scan_noncharsetnskip.o scan_nonwhitenskip.o scan_pb_tag.o scan_pb_type0_sint.o scan_pb_type1_double.o scan_pb_type1_fixed64.o scan_pb_type2_stringlen.o scan_pb_type5_fixed32.o scan_pb_type5_float.o scan_plusminus.o scan_short.o scan_uint.o scan_ulong.o scan_ulonglong.o scan_ulongn.o scan_ushort.o scan_utf8.o scan_utf8_sem.o scan_varint.o scan_whitenskip.o scan_xint.o scan_xlong.o scan_xlonglong.o scan_xlongn.o scan_xshort.o str_chr.o str_copy.o str_diff.o str_diffn.o str_len.o str_rchr.o str_start.o uint16_pack.o uint16_pack_big.o uint16_read.o uint16_read_big.o uint16_unpack.o uint16_unpack_big.o uint32_pack.o uint32_pack_big.o uint32_read.o uint32_read_big.o uint32_unpack.o uint32_unpack_big.o uint64_pack.o uint64_pack_big.o uint64_read.o uint64_read_big.o uint64_unpack.o uint64_unpack_big.o open_append.o open_excl.o open_read.o open_rw.o open_trunc.o open_write.o openreadclose.o readclose.o stralloc_append.o stralloc_cat.o stralloc_catb.o stralloc_catlong0.o stralloc_catm_internal.o stralloc_cats.o stralloc_catulong0.o stralloc_chomp.o stralloc_chop.o stralloc_copy.o stralloc_copyb.o stralloc_copys.o stralloc_diff.o stralloc_diffs.o stralloc_free.o stralloc_init.o stralloc_ready.o stralloc_readyplus.o stralloc_starts.o stralloc_zero.o iopause.o ndelay_off.o ndelay_on.o winsock2errno.o fmt_ip4.o fmt_ip6.o fmt_ip6_flat.o fmt_ip6c.o fmt_ip6if.o fmt_ip6ifc.o init.o scan_ip4.o scan_ip6.o scan_ip6_flat.o scan_ip6if.o socket_accept4.o socket_accept4_flags.o socket_accept4_makenonblocking.o socket_accept4_makenonblocking_setcloseonexec.o socket_accept4_setcloseonexec.o socket_accept6.o socket_accept6_flags.o socket_accept6_makenonblocking.o socket_accept6_makenonblocking_setcloseonexec.o socket_accept6_setcloseonexec.o socket_bind4.o socket_bind4_reuse.o socket_bind6.o socket_bind6_reuse.o socket_broadcast.o socket_connect4.o socket_connect6.o socket_connected.o socket_deferaccept.o socket_fastopen.o socket_fastopen_connect4.o socket_fastopen_connect6.o socket_getifidx.o socket_getifname.o socket_ip4loopback.o socket_listen.o socket_local4.o socket_local6.o socket_mchopcount6.o socket_mcjoin4.o socket_mcjoin6.o socket_mcleave4.o socket_mcleave6.o socket_mcloop4.o socket_mcloop6.o socket_mcttl4.o socket_noipv6.o socket_quickack.o socket_recv4.o socket_recv6.o socket_remote4.o socket_remote6.o socket_sctp4.o socket_sctp4b.o socket_sctp6.o socket_sctp6b.o socket_send4.o socket_send6.o socket_tcp4.o socket_tcp4b.o socket_tcp6.o socket_tcp6b.o socket_tryreservein.o socket_udp4.o socket_udp6.o socket_v4mappedprefix.o socket_v6any.o socket_v6loopback.o bs_capacityassert.o bs_capacitycheck.o bs_capacityleft.o bs_consumeleftovers.o bs_err.o bs_get.o bs_init_bstream_size.o bs_init_iobuf.o bs_init_iobuf_size.o bs_init_membuf.o bs_nomoredataassert.o bs_peek.o bs_seterrorstate.o bs_skip.o buffer_0.o buffer_0small.o buffer_1.o buffer_1small.o buffer_2.o buffer_close.o buffer_feed.o buffer_flush.o buffer_free.o buffer_fromarray.o buffer_frombuf.o buffer_fromsa.o buffer_get.o buffer_get_new_token_sa.o buffer_get_new_token_sa_pred.o buffer_get_token.o buffer_get_token_pred.o buffer_get_token_sa.o buffer_get_token_sa_pred.o buffer_getc.o buffer_getline.o buffer_getline_sa.o buffer_getn.o buffer_getnewline_sa.o buffer_init.o buffer_init_allocbuf.o buffer_init_free.o buffer_init_read.o buffer_init_read_allocbuf.o buffer_init_staticcontents.o buffer_init_staticcontents_free.o buffer_init_write.o buffer_init_write_allocbuf.o buffer_mmapread.o buffer_munmap.o buffer_peek.o buffer_peekc.o buffer_put.o buffer_put8long.o buffer_putalign.o buffer_puterror.o buffer_puterror2.o buffer_putflush.o buffer_putlong.o buffer_putlonglong.o buffer_putm_internal.o buffer_putm_internal_flush.o buffer_putnlflush.o buffer_puts.o buffer_putsa.o buffer_putsaflush.o buffer_putsalign.o buffer_putsflush.o buffer_putspace.o buffer_putulong.o buffer_putulonglong.o buffer_putxlong.o buffer_seek.o buffer_stubborn.o buffer_stubborn2.o buffer_tosa.o errmsg_iam.o errmsg_info.o errmsg_infosys.o errmsg_puts.o errmsg_warn.o errmsg_warnsys.o errmsg_write.o prs_asciiz.o prs_asciiz_fixedlen.o prs_readblob.o prs_u16.o prs_u16_big.o prs_u32.o prs_u32_big.o prs_u64.o prs_u64_big.o mmap_private.o mmap_read.o mmap_readat.o mmap_shared.o mmap_unmap.o base64.o base64url.o fmt_base64.o fmt_base64url.o fmt_cescape.o fmt_foldwhitespace.o fmt_hexdump.o fmt_html.o fmt_html_tagarg.o fmt_jsonescape.o fmt_ldapescape.o fmt_ldapescape2.o fmt_quotedprintable.o fmt_to_array.o fmt_to_sa.o fmt_tofrom_array.o fmt_urlencoded.o fmt_uuencoded.o fmt_xml.o fmt_yenc.o scan_base64.o scan_base64url.o scan_cescape.o scan_hexdump.o scan_html.o scan_jsonescape.o scan_ldapescape.o scan_quotedprintable.o scan_to_array.o scan_to_sa.o scan_tofrom_array.o scan_urlencoded.o scan_uuencoded.o scan_yenc.o taia_add.o taia_addsec.o taia_approx.o taia_frac.o taia_half.o taia_less.o taia_now.o taia_pack.o taia_sub.o taia_tai.o taia_uint.o taia_unpack.o tai_add.o tai_now.o tai_pack.o tai_sub.o tai_uint.o tai_unpack.o case_diffb.o case_diffs.o case_lowerb.o case_lowers.o case_starts.o array_allocate.o array_bytes.o array_cat.o array_cat0.o array_catb.o array_cate.o array_cats.o array_cats0.o array_equal.o array_fail.o array_get.o array_length.o array_reset.o array_start.o array_trunc.o array_truncate.o iarray_allocate.o iarray_free.o iarray_get.o iarray_init.o iarray_length.o imult16.o imult32.o imult64.o range_arrayinbuf.o range_str2inbuf.o range_str4inbuf.o range_strinbuf.o umult16.o umult32.o umult64.o io_appendfile.o io_block.o io_canread.o io_canwrite.o io_check.o io_close.o io_closeonexec.o io_createfile.o io_debugstring.o io_dontwantread.o io_dontwantwrite.o io_eagain.o io_eagain_read.o io_eagain_write.o io_fd.o io_finishandshutdown.o io_getcookie.o io_mmapwritefile.o io_nonblock.o io_passfd.o io_pipe.o io_readfile.o io_readwritefile.o io_receivefd.o io_sendfile.o io_setcookie.o io_sigpipe.o io_socketpair.o io_timedout.o io_timeout.o io_timeouted.o io_tryread.o io_tryreadtimeout.o io_trywrite.o io_trywritetimeout.o io_wait.o io_waitread.o io_waituntil.o io_waituntil2.o io_waitwrite.o io_wantread.o io_wantwrite.o iob_addbuf.o iob_addbuf_free.o iob_addbuf_internal.o iob_addbuf_munmap.o iob_addfile.o iob_addfile_close.o iob_adds.o iob_adds_free.o iob_bytesleft.o iob_free.o iob_new.o iob_prefetch.o iob_reset.o iob_send.o iob_write.o iom_abort.o iom_add.o iom_init.o iom_wait.o cdb.o cdb_hash.o cdb_make.o cdb_traverse.o critbit.o
+
+ar: `u' modifier ignored since `D' is the default (see `U')
+
+ranlib libowfat.a
+
+if  gcc -pipe -W -Wall -Wextra  -D_REENTRANT -O2 -I. -o trysocket trysocket.c >/dev/null 2>&1; then echo ""; else \
+if  gcc -pipe -W -Wall -Wextra  -D_REENTRANT -O2 -I. -o trysocket trysocket.c -lsocket >/dev/null 2>&1; then echo "-lsocket"; else \
+if  gcc -pipe -W -Wall -Wextra  -D_REENTRANT -O2 -I. -o trysocket trysocket.c -lsocket -lnsl >/dev/null 2>&1; then echo "-lsocket -lnsl"; \
+fi; fi; fi > blah
+
+if  gcc -pipe -W -Wall -Wextra  -D_REENTRANT -O2 -I. -o trysocket trysendfile.c `cat blah`>/dev/null 2>&1; then cat blah; else \
+if  gcc -pipe -W -Wall -Wextra  -D_REENTRANT -O2 -I. -o trysocket trysendfile.c -lsendfile `cat blah` >/dev/null 2>&1; then echo "-lsendfile"; cat blah; \
+fi; fi > libsocket
+
+rm -f blah trysocket
+
+gcc -c t.c -pipe -W -Wall -Wextra  -D_REENTRANT -O2 -I.
+
+In file included from ./libowfat/iopause.h:9,
+                 from dns.h:6,
+                 from t.c:15:
+/usr/include/sys/poll.h:1:2: warning: #warning redirecting incorrect #include <sys/poll.h> to <poll.h> [-Wcpp]
+    1 | #warning redirecting incorrect #include <sys/poll.h> to <poll.h>
+      |  ^~~~~~~
+
+gcc -g -o t t.o libowfat.a `cat libsocket` -lpthread 
+
+Removing intermediate container b99a9bcd9670
+
+ ---> 5306a083c618
+
+Step 14/19 : RUN git clone git://erdgeist.org/opentracker 		&& cd opentracker                 && sed -i 's/#FEATURES+=-DWANT_ACCESSLIST_WHITE/FEATURES+=-DWANT_ACCESSLIST_WHITE/' Makefile 		&& make
+
+
+
+ ---> Running in 7b2c8e278cb0
+
+Cloning into 'opentracker'...
+
+Makefile:87: warning: ignoring prerequisites on suffix rule definition
+Makefile:84: warning: ignoring prerequisites on suffix rule definition
+Makefile:87: warning: ignoring prerequisites on suffix rule definition
+
+Makefile:87: warning: ignoring prerequisites on suffix rule definition
+
+Makefile:84: warning: ignoring prerequisites on suffix rule definition
+Makefile:87: warning: ignoring prerequisites on suffix rule definition
+
+cc -c -o opentracker.o -I../libowfat -Wall -pipe -Wextra  -O3 -DWANT_ACCESSLIST_WHITE -DWANT_FULLSCRAPE opentracker.c
+
+cc -c -o trackerlogic.o -I../libowfat -Wall -pipe -Wextra  -O3 -DWANT_ACCESSLIST_WHITE -DWANT_FULLSCRAPE trackerlogic.c
+
+cc -c -o scan_urlencoded_query.o -I../libowfat -Wall -pipe -Wextra  -O3 -DWANT_ACCESSLIST_WHITE -DWANT_FULLSCRAPE scan_urlencoded_query.c
+
+cc -c -o ot_mutex.o -I../libowfat -Wall -pipe -Wextra  -O3 -DWANT_ACCESSLIST_WHITE -DWANT_FULLSCRAPE ot_mutex.c
+
+cc -c -o ot_stats.o -I../libowfat -Wall -pipe -Wextra  -O3 -DWANT_ACCESSLIST_WHITE -DWANT_FULLSCRAPE ot_stats.c
+
+cc -c -o ot_vector.o -I../libowfat -Wall -pipe -Wextra  -O3 -DWANT_ACCESSLIST_WHITE -DWANT_FULLSCRAPE ot_vector.c
+
+cc -c -o ot_clean.o -I../libowfat -Wall -pipe -Wextra  -O3 -DWANT_ACCESSLIST_WHITE -DWANT_FULLSCRAPE ot_clean.c
+
+cc -c -o ot_udp.o -I../libowfat -Wall -pipe -Wextra  -O3 -DWANT_ACCESSLIST_WHITE -DWANT_FULLSCRAPE ot_udp.c
+
+ot_udp.c: In function 'udp_worker':
+ot_udp.c:195:16: warning: cast from pointer to integer of different size [-Wpointer-to-int-cast]
+  195 |   int64 sock = (int64)args;
+      |                ^
+
+ot_udp.c: In function 'udp_init':
+
+ot_udp.c:224:51: warning: cast to pointer from integer of different size [-Wint-to-pointer-cast]
+  224 |     pthread_create( &thread_id, NULL, udp_worker, (void *)sock );
+      |                                                   ^
+
+cc -c -o ot_iovec.o -I../libowfat -Wall -pipe -Wextra  -O3 -DWANT_ACCESSLIST_WHITE -DWANT_FULLSCRAPE ot_iovec.c
+
+cc -c -o ot_fullscrape.o -I../libowfat -Wall -pipe -Wextra  -O3 -DWANT_ACCESSLIST_WHITE -DWANT_FULLSCRAPE ot_fullscrape.c
+
+ot_fullscrape.c: In function 'fullscrape_write_one':
+
+ot_fullscrape.c:116:28: warning: format '%zd' expects argument of type 'signed size_t', but argument 3 has type 'ot_time' {aka 'long long int'} [-Wformat=]
+  116 |       r += sprintf( r, ":%zd:%zd\n", peer_list->base, peer_list->down_count );
+      |                          ~~^         ~~~~~~~~~~~~~~~
+      |                            |                  |
+      |                            int                ot_time {aka long long int}
+      |                          %lld
+
+cc -c -o ot_accesslist.o -I../libowfat -Wall -pipe -Wextra  -O3 -DWANT_ACCESSLIST_WHITE -DWANT_FULLSCRAPE ot_accesslist.c
+
+cc -c -o ot_http.o -I../libowfat -Wall -pipe -Wextra  -O3 -DWANT_ACCESSLIST_WHITE -DWANT_FULLSCRAPE ot_http.c
+
+cc -c -o ot_livesync.o -I../libowfat -Wall -pipe -Wextra  -O3 -DWANT_ACCESSLIST_WHITE -DWANT_FULLSCRAPE ot_livesync.c
+
+cc -c -o ot_rijndael.o -I../libowfat -Wall -pipe -Wextra  -O3 -DWANT_ACCESSLIST_WHITE -DWANT_FULLSCRAPE ot_rijndael.c
+
+cc -o opentracker opentracker.o trackerlogic.o scan_urlencoded_query.o ot_mutex.o ot_stats.o ot_vector.o ot_clean.o ot_udp.o ot_iovec.o ot_fullscrape.o ot_accesslist.o ot_http.o ot_livesync.o ot_rijndael.o -L../libowfat -lowfat -pthread -lpthread -lz
+
+strip opentracker
+
+cc -c -o opentracker.debug.o -I../libowfat -Wall -pipe -Wextra  -D_DEBUG -g -ggdb  -DWANT_ACCESSLIST_WHITE -DWANT_FULLSCRAPE opentracker.c
+
+cc -c -o trackerlogic.debug.o -I../libowfat -Wall -pipe -Wextra  -D_DEBUG -g -ggdb  -DWANT_ACCESSLIST_WHITE -DWANT_FULLSCRAPE trackerlogic.c
+
+cc -c -o scan_urlencoded_query.debug.o -I../libowfat -Wall -pipe -Wextra  -D_DEBUG -g -ggdb  -DWANT_ACCESSLIST_WHITE -DWANT_FULLSCRAPE scan_urlencoded_query.c
+
+cc -c -o ot_mutex.debug.o -I../libowfat -Wall -pipe -Wextra  -D_DEBUG -g -ggdb  -DWANT_ACCESSLIST_WHITE -DWANT_FULLSCRAPE ot_mutex.c
+
+cc -c -o ot_stats.debug.o -I../libowfat -Wall -pipe -Wextra  -D_DEBUG -g -ggdb  -DWANT_ACCESSLIST_WHITE -DWANT_FULLSCRAPE ot_stats.c
+
+cc -c -o ot_vector.debug.o -I../libowfat -Wall -pipe -Wextra  -D_DEBUG -g -ggdb  -DWANT_ACCESSLIST_WHITE -DWANT_FULLSCRAPE ot_vector.c
+
+cc -c -o ot_clean.debug.o -I../libowfat -Wall -pipe -Wextra  -D_DEBUG -g -ggdb  -DWANT_ACCESSLIST_WHITE -DWANT_FULLSCRAPE ot_clean.c
+
+cc -c -o ot_udp.debug.o -I../libowfat -Wall -pipe -Wextra  -D_DEBUG -g -ggdb  -DWANT_ACCESSLIST_WHITE -DWANT_FULLSCRAPE ot_udp.c
+
+ot_udp.c: In function 'udp_worker':
+ot_udp.c:195:16: warning: cast from pointer to integer of different size [-Wpointer-to-int-cast]
+  195 |   int64 sock = (int64)args;
+      |                ^
+
+ot_udp.c: In function 'udp_init':
+
+ot_udp.c:224:51: warning: cast to pointer from integer of different size [-Wint-to-pointer-cast]
+  224 |     pthread_create( &thread_id, NULL, udp_worker, (void *)sock );
+      |                                                   ^
+
+cc -c -o ot_iovec.debug.o -I../libowfat -Wall -pipe -Wextra  -D_DEBUG -g -ggdb  -DWANT_ACCESSLIST_WHITE -DWANT_FULLSCRAPE ot_iovec.c
+
+cc -c -o ot_fullscrape.debug.o -I../libowfat -Wall -pipe -Wextra  -D_DEBUG -g -ggdb  -DWANT_ACCESSLIST_WHITE -DWANT_FULLSCRAPE ot_fullscrape.c
+
+ot_fullscrape.c: In function 'fullscrape_write_one':
+
+ot_fullscrape.c:116:28: warning: format '%zd' expects argument of type 'signed size_t', but argument 3 has type 'ot_time' {aka 'long long int'} [-Wformat=]
+  116 |       r += sprintf( r, ":%zd:%zd\n", peer_list->base, peer_list->down_count );
+      |                          ~~^         ~~~~~~~~~~~~~~~
+      |                            |                  |
+      |                            int                ot_time {aka long long int}
+      |                          %lld
+
+cc -c -o ot_accesslist.debug.o -I../libowfat -Wall -pipe -Wextra  -D_DEBUG -g -ggdb  -DWANT_ACCESSLIST_WHITE -DWANT_FULLSCRAPE ot_accesslist.c
+
+cc -c -o ot_http.debug.o -I../libowfat -Wall -pipe -Wextra  -D_DEBUG -g -ggdb  -DWANT_ACCESSLIST_WHITE -DWANT_FULLSCRAPE ot_http.c
+
+cc -c -o ot_livesync.debug.o -I../libowfat -Wall -pipe -Wextra  -D_DEBUG -g -ggdb  -DWANT_ACCESSLIST_WHITE -DWANT_FULLSCRAPE ot_livesync.c
+
+cc -c -o ot_rijndael.debug.o -I../libowfat -Wall -pipe -Wextra  -D_DEBUG -g -ggdb  -DWANT_ACCESSLIST_WHITE -DWANT_FULLSCRAPE ot_rijndael.c
+
+cc -o opentracker.debug opentracker.debug.o trackerlogic.debug.o scan_urlencoded_query.debug.o ot_mutex.debug.o ot_stats.debug.o ot_vector.debug.o ot_clean.debug.o ot_udp.debug.o ot_iovec.debug.o ot_fullscrape.debug.o ot_accesslist.debug.o ot_http.debug.o ot_livesync.debug.o ot_rijndael.debug.o -L../libowfat -lowfat -pthread -lpthread -lz
+
+Removing intermediate container 7b2c8e278cb0
+
+ ---> 1efa6aa38b4e
+
+Step 15/19 : FROM alpine
+
+
+
+ ---> 30a002f9ce29
+
+Step 16/19 : COPY --from=build opentracker/opentracker /usr/bin/opentracker
+
+
+
+ ---> 233fbdce9b54
+
+Step 17/19 : EXPOSE 6969/tcp
+
+
+
+ ---> Running in 3c66ede51da7
+
+Removing intermediate container 3c66ede51da7
+
+ ---> 3d262946be75
+
+Step 18/19 : EXPOSE 6969/udp
+
+
+
+ ---> Running in 118ce9f8b87f
+
+Removing intermediate container 118ce9f8b87f
+
+ ---> d1a13b97e362
+
+Step 19/19 : CMD ["opentracker", "-f", "/etc/opentracker/opentracker.conf"]
+
+
+
+ ---> Running in 9d87ae291161
+
+Removing intermediate container 9d87ae291161
+
+ ---> cca424edf0a8
+
+Successfully built cca424edf0a8
+
+Successfully tagged alpine-opentracker-rpi:v0011
+
